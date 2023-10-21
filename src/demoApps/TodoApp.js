@@ -7,6 +7,9 @@ const TodoApp = () => {
   const [listTodos, setListTodos] = useState([]);
   const [errorMsg, setErrorMsg] = useState('');
 
+  // For View
+  const [viewTodo, setViewTodo] = useState(null);
+
   // console.log('todoInput=>', todoInput);
 
   const addTodo = () => {
@@ -25,10 +28,19 @@ const TodoApp = () => {
     }
   };
 
-  //console.log('listTodos=>', listTodos);
+  const viewClick = (vdata) => {
+    console.log('vdata=>', vdata);
+    setViewTodo(vdata);
+
+    setTimeout(() => {
+      setViewTodo(null);
+    }, 2000);
+  };
+
+  console.log('viewTodo=>', viewTodo);
 
   return (
-    <div className="todo_container">
+    <div className="container todo_container">
       <div className="input_head">
         <form>
           <input
@@ -43,7 +55,11 @@ const TodoApp = () => {
           &nbsp;
           <button
             type="button"
-            style={{ fontSize: '20px', background: 'blue', color: '#fff' }}
+            style={{
+              fontSize: '20px',
+              background: !todoInput ? 'gray' : 'blue',
+              color: '#fff',
+            }}
             onClick={() => addTodo()}
             disabled={!todoInput}
           >
@@ -52,6 +68,15 @@ const TodoApp = () => {
         </form>
         <p style={{ color: 'red' }}>{errorMsg}</p>
       </div>
+
+      {viewTodo ? (
+        <div className="container">
+          <h3>View Todo</h3>
+          <p>{viewTodo.todo}</p>
+        </div>
+      ) : (
+        <div></div>
+      )}
 
       {listTodos.length === 0 ? (
         <h3>No todo available!</h3>
@@ -66,14 +91,15 @@ const TodoApp = () => {
               </tr>
             </thead>
             {listTodos.map((tdata, index) => {
-              console.log('tdata=>', tdata);
+              // console.log('tdata=>', tdata);
               return (
                 <tbody key={tdata.id}>
                   <tr>
                     <td>{index + 1}</td>
                     <td>{tdata.todo}</td>
                     <td>
-                      <button> View</button>&nbsp;&nbsp;
+                      <button onClick={() => viewClick(tdata)}> View</button>
+                      &nbsp;&nbsp;
                       <button> Edit</button>&nbsp;&nbsp;
                       <button> Delete</button>
                     </td>

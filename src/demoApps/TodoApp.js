@@ -25,7 +25,7 @@ const TodoApp = () => {
     }
   };
 
-  console.log('listTodos=>', listTodos);
+  //console.log('listTodos=>', listTodos);
 
   return (
     <div className="todo_container">

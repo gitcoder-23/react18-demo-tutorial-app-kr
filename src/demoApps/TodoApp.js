@@ -72,6 +72,15 @@ const TodoApp = () => {
     setEditId(null);
   };
 
+  const deleteClick = (delData) => {
+    if (window.confirm('Do you want to delete?')) {
+      const deletedTodo = [...listTodos].filter((delTodo) => {
+        return delTodo.id !== delData.id;
+      });
+      setListTodos(deletedTodo);
+    }
+  };
+
   console.log('listTodos=>', listTodos);
 
   return (
@@ -160,7 +169,10 @@ const TodoApp = () => {
                         &nbsp;&nbsp;
                         <button onClick={() => editClick(tdata)}> Edit</button>
                         &nbsp;&nbsp;
-                        <button> Delete</button>
+                        <button onClick={() => deleteClick(tdata)}>
+                          {' '}
+                          Delete
+                        </button>
                       </td>
                     )}
                   </tr>

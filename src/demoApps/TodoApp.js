@@ -10,7 +10,9 @@ const TodoApp = () => {
   // For View
   const [viewTodo, setViewTodo] = useState(null);
 
-  // console.log('todoInput=>', todoInput);
+  // Edit State
+  const [editId, setEditId] = useState(null);
+  const [editText, setEditText] = useState('');
 
   const addTodo = () => {
     if (todoInput === '' || !todoInput) {
@@ -29,7 +31,7 @@ const TodoApp = () => {
   };
 
   const viewClick = (vdata) => {
-    console.log('vdata=>', vdata);
+    // console.log('vdata=>', vdata);
     setViewTodo(vdata);
 
     setTimeout(() => {
@@ -37,10 +39,42 @@ const TodoApp = () => {
     }, 2000);
   };
 
-  console.log('viewTodo=>', viewTodo);
+  // Edit
+  const editClick = (edData) => {
+    // console.log('edData=>', edData);
+    setEditId(edData.id);
+    setEditText(edData.todo);
+  };
+  console.log('editText=>', editText);
+
+  const editSubmit = () => {
+    if (editText === '') {
+      setErrorMsg('Please fill the field!');
+      setTimeout(() => {
+        setErrorMsg('');
+      }, 2000);
+    } else {
+      const updateTodo = [...listTodos].map((edTodo) => {
+        if (edTodo.id === editId) {
+          edTodo.todo = editText;
+        }
+        return edTodo;
+      });
+      setListTodos(updateTodo);
+      editCancel();
+    }
+  };
+
+  const editCancel = () => {
+    setEditText('');
+    setEditId(null);
+  };
+
+  console.log('listTodos=>', listTodos);
 
   return (
     <div className="container todo_container">
+      <p style={{ color: 'red' }}>{errorMsg}</p>
       <div className="input_head">
         <form>
           <input
@@ -66,7 +100,6 @@ const TodoApp = () => {
             Add
           </button>
         </form>
-        <p style={{ color: 'red' }}>{errorMsg}</p>
       </div>
 
       {viewTodo ? (
@@ -96,13 +129,38 @@ const TodoApp = () => {
                 <tbody key={tdata.id}>
                   <tr>
                     <td>{index + 1}</td>
-                    <td>{tdata.todo}</td>
-                    <td>
-                      <button onClick={() => viewClick(tdata)}> View</button>
-                      &nbsp;&nbsp;
-                      <button> Edit</button>&nbsp;&nbsp;
-                      <button> Delete</button>
-                    </td>
+
+                    {editId === tdata.id ? (
+                      <>
+                        <input
+                          type="text"
+                          value={editText}
+                          onChange={(e) => setEditText(e.target.value)}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <td>{tdata.todo}</td>
+                      </>
+                    )}
+                    {editId === tdata.id ? (
+                      <td>
+                        <button onClick={() => editSubmit()}>
+                          {' '}
+                          Edit Submit
+                        </button>
+                        &nbsp;&nbsp;
+                        <button onClick={() => editCancel()}> Cancel</button>
+                      </td>
+                    ) : (
+                      <td>
+                        <button onClick={() => viewClick(tdata)}> View</button>
+                        &nbsp;&nbsp;
+                        <button onClick={() => editClick(tdata)}> Edit</button>
+                        &nbsp;&nbsp;
+                        <button> Delete</button>
+                      </td>
+                    )}
                   </tr>
                 </tbody>
               );

@@ -42,8 +42,10 @@ const TodoApp = () => {
   // Edit
   const editClick = (edData) => {
     // console.log('edData=>', edData);
-    setEditId(edData.id);
-    setEditText(edData.todo);
+    if (window.confirm('Do you want?')) {
+      setEditId(edData.id);
+      setEditText(edData.todo);
+    }
   };
   console.log('editText=>', editText);
 

@@ -9,6 +9,7 @@ const MenuBar = () => {
           <Navbar.Brand href="/">Navbar</Navbar.Brand>
           <Nav className="me-right">
             <Nav.Link href="/">Todo App</Nav.Link>
+            <Nav.Link href="/taskapp">Todo Task App</Nav.Link>
             <Nav.Link href="/task/newtodo">NewTodo App</Nav.Link>
           </Nav>
         </Container>

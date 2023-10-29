@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form, Row, Col } from "react-bootstrap";
+import { Table, Button, Modal, Form } from "react-bootstrap";
 import SpinnerComponent from "../components/SpinnerComponent";
 
 const UserList = () => {
@@ -25,6 +25,10 @@ const UserList = () => {
 
   const [err, setErr]=useState('')
 
+  const [addModal, setAddModal] = useState(false);
+  const [addUserDataName, setAddUserDataName] = useState("")
+  const [addUserDataEmail, setAddUserDataEmail] = useState("")
+  const [addUserDataPhone, setAddUserDataPhone] = useState("")
 
   const getAllUsers = () => {
     setIsLoading(true);
@@ -115,6 +119,30 @@ const UserList = () => {
     }
   }
 
+  const addUser =()=>{
+    setAddModal(true)
+  }
+
+  const addUserData=()=>{
+    if (addUserDataName === "" && addUserDataEmail === "" && addUserDataPhone === "" ) {
+      setErr('Enter your details')
+      setTimeout(() => {
+        setErr(null)
+      }, 2000);
+    }else{
+      setUserAllDatas([...userAllDatas,
+        {id: Date.now(), 
+          name: addUserDataName,
+          email:addUserDataEmail,
+          phone: addUserDataPhone
+        }
+        ])
+        setAddUserDataName('')
+        setAddUserDataEmail('')
+        setAddUserDataPhone('')
+        setAddModal(false)
+    }
+  }
   //console.log('editUserData -', userAllDatas)
 
   return (
@@ -147,7 +175,7 @@ const UserList = () => {
                 <button
                   type="button"
                   className="btn btn-dark"
-                  onClick={() => resetSearch()}
+                  onClick={() => addUser()}
                 >
                   Add User
                 </button>
@@ -297,6 +325,59 @@ const UserList = () => {
         </Modal.Footer>
       </Modal>
       {/* Edit Modal End */}
+
+
+      {/* Add Modal Start */}
+
+      <Modal
+        show={addModal}
+        onHide={() => setAddModal(false)}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Add User</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className="container">
+            {err ? <p className="text-danger text-center">{err}</p> : " "}
+            <Form className="justify-content-center mt-4">
+              <Form.Control
+                size="md"
+                className="m-1"
+                type="text"
+                value={addUserDataName}
+                placeholder="Edit your name"
+                onChange={(e)=>setAddUserDataName(e.target.value)}
+              />
+
+              <Form.Control
+                size="md"
+                className="m-1"
+                type="text"
+                value={addUserDataEmail}
+                placeholder="Edit your email"
+                onChange={(e)=>setAddUserDataEmail(e.target.value)}
+              />
+              <Form.Control
+                size="md"
+                className="m-1"
+                type="text"
+                value={addUserDataPhone}
+                placeholder="Edit your phone"
+                onChange={(e)=>setAddUserDataPhone(e.target.value)}
+              />
+              <Button type='button' className='m-3' variant="primary"  onClick={()=>addUserData()}>Add User</Button>
+              
+            </Form>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setAddModal(false)}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {/* Add Modal End */}
     </div>
   );
 };

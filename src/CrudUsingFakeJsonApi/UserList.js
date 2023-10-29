@@ -17,7 +17,12 @@ const UserList = () => {
   const [showViewModal, setShowViewModal] = useState(false);
 
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editUserData, serEditUserData] = useState({})
+
+  const [editUserDataId, setEditUserDataId] = useState()
+  const [editUserDataName, setEditUserDataName] = useState("")
+  const [editUserDataEmail, setEditUserDataEmail] = useState("")
+  const [editUserDataPhone, setEditUserDataPhone] = useState("")
+
   const [err, setErr]=useState('')
 
 
@@ -76,31 +81,37 @@ const UserList = () => {
 
   const editUser = (data) => {
     setShowEditModal(true);
-    serEditUserData(data)
+    setEditUserDataId(data.id)
+    setEditUserDataName(data.name)
+    setEditUserDataEmail(data.email)
+    setEditUserDataPhone(data.phone)
   }
 
   const cancelEdit=()=>{
     setShowEditModal(false);
-    serEditUserData({})
+    setEditUserDataName("")
+    setEditUserDataEmail("")
+    setEditUserDataPhone("")
   }
 
   const SubmitData=()=>{
-    if(editUserData=== ''){
-      setErr('Edit your name')
+    if(editUserDataName=== '' && editUserDataEmail=== '' && editUserDataPhone=== ''){
+      setErr('Edit your details')
     }else{
       const updateAllUser = userAllDatas.map((item)=>{
-        if(item.id===editUserData.id){
+        if(item.id===editUserDataId){
           return {
             ...userAllDatas, 
-            name:editUserData.name, 
-            email:editUserData.email,
-            phone:editUserData.phone
+            name:editUserDataName, 
+            email:editUserDataEmail,
+            phone:editUserDataPhone
           }
         }
         return item
       })
-      console.log('updateAllUser -', updateAllUser)
+      //console.log('updateAllUser -', updateAllUser)
       setUserAllDatas(updateAllUser)
+      setShowEditModal(false);
     }
   }
 
@@ -253,26 +264,26 @@ const UserList = () => {
                 size="md"
                 className="m-1"
                 type="text"
-                value={editUserData.name}
+                value={editUserDataName}
                 placeholder="Edit your name here"
-                onChange={(e)=>serEditUserData(e.target.value)}
+                onChange={(e)=>setEditUserDataName(e.target.value)}
               />
 
               <Form.Control
                 size="md"
                 className="m-1"
                 type="text"
-                value={editUserData.email}
+                value={editUserDataEmail}
                 placeholder="Edit your email here"
-                onChange={(e)=>serEditUserData(e.target.value)}
+                onChange={(e)=>setEditUserDataEmail(e.target.value)}
               />
               <Form.Control
                 size="md"
                 className="m-1"
                 type="text"
-                value={editUserData.phone}
+                value={editUserDataPhone}
                 placeholder="Edit your phone here"
-                onChange={(e)=>serEditUserData(e.target.value)}
+                onChange={(e)=>setEditUserDataPhone(e.target.value)}
               />
               <Button type='button' className='m-3' variant="primary"  onClick={()=>SubmitData()}>Edit Submit</Button>
               <Button type='button' className='m-3' variant="danger" onClick={()=>cancelEdit()}>Cancel</Button>

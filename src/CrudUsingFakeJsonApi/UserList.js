@@ -1,11 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Spinner, Table } from 'react-bootstrap';
+import { Spinner, Table, Button, Modal } from 'react-bootstrap';
 
 const UserList = () => {
   const [userAllDatas, setUserAllDatas] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [viewUserData, setViewUserData] = useState(null)
+
+  const [show, setShow] = useState(false);
+
 
   const getAllUsers = () => {
     setIsLoading(true);
@@ -26,6 +30,13 @@ const UserList = () => {
         setIsLoading(false);
       });
   };
+  const ViewItem = (user) => {
+    setViewUserData(user)
+  }
+
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     getAllUsers();
@@ -48,6 +59,8 @@ const UserList = () => {
               <th>User Name</th>
               <th>Email</th>
               <th>Phone</th>
+              <th>Action</th>
+              <th></th>
             </tr>
           </thead>
           {userAllDatas &&
@@ -59,12 +72,29 @@ const UserList = () => {
                     <td>{udata.name}</td>
                     <td>{udata.email}</td>
                     <td>{udata.phone}</td>
+                    <td><Button className='mx-1' variant="success" onClick={() => handleShow()}>View</Button></td>
+                    <td><Button className='mx-1' variant="danger">Delete</Button></td>
                   </tr>
                 </tbody>
               );
             })}
         </Table>
       )}
+
+      <Modal show={show} onHide={handleClose} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };

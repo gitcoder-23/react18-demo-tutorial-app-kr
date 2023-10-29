@@ -66,7 +66,6 @@ const UserList = () => {
               <th>Email</th>
               <th>Phone</th>
               <th>Action</th>
-              <th></th>
             </tr>
           </thead>
           {userAllDatas &&
@@ -85,13 +84,12 @@ const UserList = () => {
                         onClick={() => viewUserDetails(udata)}
                       >
                         View
-                      </Button>
-                    </td>
-                    <td>
+                      </Button>&nbsp;
                       <Button className="mx-1" variant="danger">
                         Delete
                       </Button>
                     </td>
+                    
                   </tr>
                 </tbody>
               );

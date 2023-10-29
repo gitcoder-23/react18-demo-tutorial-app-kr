@@ -346,7 +346,7 @@ const UserList = () => {
                 className="m-1"
                 type="text"
                 value={addUserDataName}
-                placeholder="Edit your name"
+                placeholder="Your name"
                 onChange={(e)=>setAddUserDataName(e.target.value)}
               />
 
@@ -355,7 +355,7 @@ const UserList = () => {
                 className="m-1"
                 type="text"
                 value={addUserDataEmail}
-                placeholder="Edit your email"
+                placeholder="Your email"
                 onChange={(e)=>setAddUserDataEmail(e.target.value)}
               />
               <Form.Control
@@ -363,7 +363,7 @@ const UserList = () => {
                 className="m-1"
                 type="text"
                 value={addUserDataPhone}
-                placeholder="Edit your phone"
+                placeholder="Your phone"
                 onChange={(e)=>setAddUserDataPhone(e.target.value)}
               />
               <Button type='button' className='m-3' variant="primary"  onClick={()=>addUserData()}>Add User</Button>

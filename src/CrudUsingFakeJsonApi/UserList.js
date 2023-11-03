@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form } from "react-bootstrap";
+import { Table, Button, Modal, Form,Badge,Card } from "react-bootstrap";
 import SpinnerComponent from "../components/SpinnerComponent";
 
 const UserList = () => {
@@ -29,6 +29,11 @@ const UserList = () => {
   const [addUserDataName, setAddUserDataName] = useState("")
   const [addUserDataEmail, setAddUserDataEmail] = useState("")
   const [addUserDataPhone, setAddUserDataPhone] = useState("")
+
+  const [userSelectData, setUserSelectData] = useState([])
+  const[selectButtonDisabled, setSelectButtonDisabled] = useState(false)
+
+    const [cartModal, setCartModal] = useState(false);
 
   const getAllUsers = () => {
     setIsLoading(true);
@@ -143,6 +148,31 @@ const UserList = () => {
         setAddModal(false)
     }
   }
+
+  const selectUser = (crr) => {
+    let isPresent = false
+    userSelectData.forEach((data)=>{
+        if(data.id===crr.id){
+            isPresent = true
+            
+        }
+    })
+    if(isPresent){
+        return
+    } 
+    setUserSelectData([...userSelectData, crr])
+    setSelectButtonDisabled(true)
+}
+const viewCartitem = () => {
+  setCartModal(true)
+}
+const removeCartItem = (user) => {
+  const updatedUser = userSelectData.filter((ele) => {
+      return ele.id !== user.id
+  })
+  setUserSelectData(updatedUser)
+  setSelectButtonDisabled(false)
+}
   //console.log('editUserData -', userAllDatas)
 
   return (
@@ -179,6 +209,7 @@ const UserList = () => {
                 >
                   Add User
                 </button>
+                <Button className='mx-2' variant="success" disabled={userSelectData.length === 0} onClick={() => viewCartitem()}>Selected User <Badge bg="dark">{userSelectData.length}</Badge></Button>
               </form>
             </div>
           </div>
@@ -241,6 +272,7 @@ const UserList = () => {
                           >
                             Delete
                           </Button>
+                          <Button className='mx-1' variant="light" onClick={() => selectUser(udata)} disabled={selectButtonDisabled}>Select</Button>
                         </td>
                       </tr>
                     </tbody>
@@ -378,6 +410,29 @@ const UserList = () => {
         </Modal.Footer>
       </Modal>
       {/* Add Modal End */}
+
+      <Modal show={cartModal} onHide={() => setCartModal(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title>User Cart Details</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {
+                        userSelectData.length > 0 &&
+                        userSelectData.map((item, index) => {
+                            return (
+                                <Card key={index} style={{ width: '100%', marginBottom: '5px' }}>
+                                    <Card.Body>
+                                        <Card.Title>{item.name} </Card.Title>
+                                        <p>{item.email} </p>
+                                        <p> {item.phone}</p>
+                                        <Button variant="danger" onClick={() => removeCartItem(item)}>X</Button>
+                                    </Card.Body>
+                                </Card>
+                            )
+                        })
+                    }
+                </Modal.Body>
+            </Modal>
     </div>
   );
 };

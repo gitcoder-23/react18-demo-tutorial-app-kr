@@ -46,7 +46,9 @@ const TableComponent = ({
                     <Button
                       className="mx-1"
                       variant="success"
-                      onClick={() => viewUserDetails(udata)}
+                      onClick={() => {
+                        viewUserDetails(udata);
+                      }}
                     >
                       View
                     </Button>

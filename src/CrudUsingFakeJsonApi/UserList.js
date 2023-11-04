@@ -1,7 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Table, Button, Modal, Form,Badge,Card } from "react-bootstrap";
-import SpinnerComponent from "../components/SpinnerComponent";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Table, Button, Modal, Form, Badge, Card } from 'react-bootstrap';
+import SpinnerComponent from '../components/SpinnerComponent';
+import ViewModal from '../components/modalComponents/ViewModal';
+import TableComponent from '../components/TableComponent';
 
 const UserList = () => {
   const [userAllDatas, setUserAllDatas] = useState([]);
@@ -9,31 +11,30 @@ const UserList = () => {
   const [isError, setIsError] = useState(false);
   const [viewUserData, setViewUserData] = useState({});
 
- 
   //Search
-  const [search, setSearch] = useState("");
-  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('');
 
   const [showViewModal, setShowViewModal] = useState(false);
 
   const [showEditModal, setShowEditModal] = useState(false);
 
-  const [editUserDataId, setEditUserDataId] = useState()
-  const [editUserDataName, setEditUserDataName] = useState("")
-  const [editUserDataEmail, setEditUserDataEmail] = useState("")
-  const [editUserDataPhone, setEditUserDataPhone] = useState("")
+  const [editUserDataId, setEditUserDataId] = useState();
+  const [editUserDataName, setEditUserDataName] = useState('');
+  const [editUserDataEmail, setEditUserDataEmail] = useState('');
+  const [editUserDataPhone, setEditUserDataPhone] = useState('');
 
-  const [err, setErr]=useState('')
+  const [err, setErr] = useState('');
 
   const [addModal, setAddModal] = useState(false);
-  const [addUserDataName, setAddUserDataName] = useState("")
-  const [addUserDataEmail, setAddUserDataEmail] = useState("")
-  const [addUserDataPhone, setAddUserDataPhone] = useState("")
+  const [addUserDataName, setAddUserDataName] = useState('');
+  const [addUserDataEmail, setAddUserDataEmail] = useState('');
+  const [addUserDataPhone, setAddUserDataPhone] = useState('');
 
-  const [userSelectData, setUserSelectData] = useState([])
-  const[selectButtonDisabled, setSelectButtonDisabled] = useState(false)
+  const [userSelectData, setUserSelectData] = useState([]);
+  const [selectButtonDisabled, setSelectButtonDisabled] = useState(false);
 
-    const [cartModal, setCartModal] = useState(false);
+  const [cartModal, setCartModal] = useState(false);
 
   const getAllUsers = () => {
     setIsLoading(true);
@@ -49,7 +50,7 @@ const UserList = () => {
         }
       })
       .catch((err) => {
-        console.log("err=>", err);
+        console.log('err=>', err);
         setIsError(true);
         setIsLoading(false);
       });
@@ -75,12 +76,12 @@ const UserList = () => {
   };
 
   const resetSearch = () => {
-    setSearch("");
-    setQuery("");
+    setSearch('');
+    setQuery('');
   };
 
   const deleteUser = (crr) => {
-    if (window.confirm("Do you want to delete?")) {
+    if (window.confirm('Do you want to delete?')) {
       const updateAllUser = userAllDatas.filter((user) => {
         return user.id !== crr.id;
       });
@@ -90,89 +91,98 @@ const UserList = () => {
 
   const editUser = (data) => {
     setShowEditModal(true);
-    setEditUserDataId(data.id)
-    setEditUserDataName(data.name)
-    setEditUserDataEmail(data.email)
-    setEditUserDataPhone(data.phone)
-  }
+    setEditUserDataId(data.id);
+    setEditUserDataName(data.name);
+    setEditUserDataEmail(data.email);
+    setEditUserDataPhone(data.phone);
+  };
 
-  const cancelEdit=()=>{
+  const cancelEdit = () => {
     setShowEditModal(false);
-    setEditUserDataName("")
-    setEditUserDataEmail("")
-    setEditUserDataPhone("")
-  }
+    setEditUserDataName('');
+    setEditUserDataEmail('');
+    setEditUserDataPhone('');
+  };
 
-  const SubmitData=()=>{
-    if(editUserDataName=== '' && editUserDataEmail=== '' && editUserDataPhone=== ''){
-      setErr('Edit your details')
-    }else{
-      const updateAllUser = userAllDatas.map((item)=>{
-        if(item.id===editUserDataId){
+  const SubmitData = () => {
+    if (
+      editUserDataName === '' &&
+      editUserDataEmail === '' &&
+      editUserDataPhone === ''
+    ) {
+      setErr('Edit your details');
+    } else {
+      const updateAllUser = userAllDatas.map((item) => {
+        if (item.id === editUserDataId) {
           return {
-            ...userAllDatas, 
-            name:editUserDataName, 
-            email:editUserDataEmail,
-            phone:editUserDataPhone
-          }
+            ...userAllDatas,
+            name: editUserDataName,
+            email: editUserDataEmail,
+            phone: editUserDataPhone,
+          };
         }
-        return item
-      })
+        return item;
+      });
       //console.log('updateAllUser -', updateAllUser)
-      setUserAllDatas(updateAllUser)
+      setUserAllDatas(updateAllUser);
       setShowEditModal(false);
     }
-  }
+  };
 
-  const addUser =()=>{
-    setAddModal(true)
-  }
+  const addUser = () => {
+    setAddModal(true);
+  };
 
-  const addUserData=()=>{
-    if (addUserDataName === "" && addUserDataEmail === "" && addUserDataPhone === "" ) {
-      setErr('Enter your details')
+  const addUserData = () => {
+    if (
+      addUserDataName === '' &&
+      addUserDataEmail === '' &&
+      addUserDataPhone === ''
+    ) {
+      setErr('Enter your details');
       setTimeout(() => {
-        setErr(null)
+        setErr(null);
       }, 2000);
-    }else{
-      setUserAllDatas([...userAllDatas,
-        {id: Date.now(), 
+    } else {
+      setUserAllDatas([
+        ...userAllDatas,
+        {
+          id: Date.now(),
           name: addUserDataName,
-          email:addUserDataEmail,
-          phone: addUserDataPhone
-        }
-        ])
-        setAddUserDataName('')
-        setAddUserDataEmail('')
-        setAddUserDataPhone('')
-        setAddModal(false)
+          email: addUserDataEmail,
+          phone: addUserDataPhone,
+        },
+      ]);
+      setAddUserDataName('');
+      setAddUserDataEmail('');
+      setAddUserDataPhone('');
+      setAddModal(false);
     }
-  }
+  };
 
   const selectUser = (crr) => {
-    let isPresent = false
-    userSelectData.forEach((data)=>{
-        if(data.id===crr.id){
-            isPresent = true
-            
-        }
-    })
-    if(isPresent){
-        return
-    } 
-    setUserSelectData([...userSelectData, crr])
-    setSelectButtonDisabled(true)
-}
-const viewCartitem = () => {
-  setCartModal(true)
-}
-const removeCartItem = (user) => {
-  const updatedUser = userSelectData.filter((ele) => {
-      return ele.id !== user.id
-  })
-  setUserSelectData(updatedUser)
-  setSelectButtonDisabled(false)
-}
+    let isPresent = false;
+    userSelectData.forEach((data) => {
+      if (data.id === crr.id) {
+        isPresent = true;
+      }
+    });
+    if (isPresent) {
+      return;
+    }
+    setUserSelectData([...userSelectData, crr]);
+    setSelectButtonDisabled(true);
+  };
+  const viewCartitem = () => {
+    setCartModal(true);
+  };
+  const removeCartItem = (user) => {
+    const updatedUser = userSelectData.filter((ele) => {
+      return ele.id !== user.id;
+    });
+    setUserSelectData(updatedUser);
+    setSelectButtonDisabled(false);
+  };
   //console.log('editUserData -', userAllDatas)
 
   return (
@@ -182,7 +192,7 @@ const removeCartItem = (user) => {
       {isLoading ? (
         <SpinnerComponent />
       ) : isError ? (
-        <h4 style={{ color: "red" }}> Something went wrong!</h4>
+        <h4 style={{ color: 'red' }}> Something went wrong!</h4>
       ) : (
         <>
           <div className="row">
@@ -192,7 +202,7 @@ const removeCartItem = (user) => {
                   type="text"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                />{" "}
+                />{' '}
                 &nbsp;
                 <button
                   type="button"
@@ -200,7 +210,7 @@ const removeCartItem = (user) => {
                   onClick={() => resetSearch()}
                 >
                   Reset
-                </button>{" "}
+                </button>{' '}
                 &nbsp;
                 <button
                   type="button"
@@ -209,11 +219,18 @@ const removeCartItem = (user) => {
                 >
                   Add User
                 </button>
-                <Button className='mx-2' variant="success" disabled={userSelectData.length === 0} onClick={() => viewCartitem()}>Selected User <Badge bg="dark">{userSelectData.length}</Badge></Button>
+                <Button
+                  className="mx-2"
+                  variant="success"
+                  disabled={userSelectData.length === 0}
+                  onClick={() => viewCartitem()}
+                >
+                  Selected User <Badge bg="dark">{userSelectData.length}</Badge>
+                </Button>
               </form>
             </div>
           </div>
-          <Table striped bordered hover variant="dark" className="mt-4">
+          {/* <Table striped bordered hover variant="dark" className="mt-4">
             <thead>
               <tr>
                 <th>#Sl.No.</th>
@@ -227,7 +244,7 @@ const removeCartItem = (user) => {
               userAllDatas
                 .filter((val) => {
                   // console.log('val=>', val);
-                  if (search === "") {
+                  if (search === '') {
                     return val;
                   } else if (
                     val.name.toLowerCase().includes(search.toLowerCase())
@@ -272,39 +289,39 @@ const removeCartItem = (user) => {
                           >
                             Delete
                           </Button>
-                          <Button className='mx-1' variant="light" onClick={() => selectUser(udata)} disabled={selectButtonDisabled}>Select</Button>
+                          <Button
+                            className="mx-1"
+                            variant="light"
+                            onClick={() => selectUser(udata)}
+                            disabled={selectButtonDisabled}
+                          >
+                            Select
+                          </Button>
                         </td>
                       </tr>
                     </tbody>
                   );
                 })}
-          </Table>
+          </Table> */}
+          <TableComponent
+            userAllDatas={userAllDatas}
+            search={search}
+            viewUserDetails={viewUserDetails}
+            editUser={editUser}
+            deleteUser={deleteUser}
+            selectUser={selectUser}
+            selectButtonDisabled={selectButtonDisabled}
+          />
         </>
       )}
 
       {/* View Modal Start */}
 
-      <Modal
-        show={showViewModal}
-        onHide={() => setShowViewModal(false)}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>View User Detail</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="container">
-            <h2>{viewUserData.name}</h2>
-            <p>Email - {viewUserData.email}</p>
-            <p>Phone - {viewUserData.phone}</p>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowViewModal(false)}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <ViewModal
+        showViewModal={showViewModal}
+        setShowViewModal={setShowViewModal}
+        viewUserData={viewUserData}
+      />
       {/* View Modal End */}
 
       {/* Edit Modal Start */}
@@ -326,7 +343,7 @@ const removeCartItem = (user) => {
                 type="text"
                 value={editUserDataName}
                 placeholder="Edit your name here"
-                onChange={(e)=>setEditUserDataName(e.target.value)}
+                onChange={(e) => setEditUserDataName(e.target.value)}
               />
 
               <Form.Control
@@ -335,7 +352,7 @@ const removeCartItem = (user) => {
                 type="text"
                 value={editUserDataEmail}
                 placeholder="Edit your email here"
-                onChange={(e)=>setEditUserDataEmail(e.target.value)}
+                onChange={(e) => setEditUserDataEmail(e.target.value)}
               />
               <Form.Control
                 size="md"
@@ -343,10 +360,24 @@ const removeCartItem = (user) => {
                 type="text"
                 value={editUserDataPhone}
                 placeholder="Edit your phone here"
-                onChange={(e)=>setEditUserDataPhone(e.target.value)}
+                onChange={(e) => setEditUserDataPhone(e.target.value)}
               />
-              <Button type='button' className='m-3' variant="primary"  onClick={()=>SubmitData()}>Edit Submit</Button>
-              <Button type='button' className='m-3' variant="danger" onClick={()=>cancelEdit()}>Cancel</Button>
+              <Button
+                type="button"
+                className="m-3"
+                variant="primary"
+                onClick={() => SubmitData()}
+              >
+                Edit Submit
+              </Button>
+              <Button
+                type="button"
+                className="m-3"
+                variant="danger"
+                onClick={() => cancelEdit()}
+              >
+                Cancel
+              </Button>
             </Form>
           </div>
         </Modal.Body>
@@ -358,20 +389,15 @@ const removeCartItem = (user) => {
       </Modal>
       {/* Edit Modal End */}
 
-
       {/* Add Modal Start */}
 
-      <Modal
-        show={addModal}
-        onHide={() => setAddModal(false)}
-        centered
-      >
+      <Modal show={addModal} onHide={() => setAddModal(false)} centered>
         <Modal.Header closeButton>
           <Modal.Title>Add User</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className="container">
-            {err ? <p className="text-danger text-center">{err}</p> : " "}
+            {err ? <p className="text-danger text-center">{err}</p> : ' '}
             <Form className="justify-content-center mt-4">
               <Form.Control
                 size="md"
@@ -379,7 +405,7 @@ const removeCartItem = (user) => {
                 type="text"
                 value={addUserDataName}
                 placeholder="Your name"
-                onChange={(e)=>setAddUserDataName(e.target.value)}
+                onChange={(e) => setAddUserDataName(e.target.value)}
               />
 
               <Form.Control
@@ -388,7 +414,7 @@ const removeCartItem = (user) => {
                 type="text"
                 value={addUserDataEmail}
                 placeholder="Your email"
-                onChange={(e)=>setAddUserDataEmail(e.target.value)}
+                onChange={(e) => setAddUserDataEmail(e.target.value)}
               />
               <Form.Control
                 size="md"
@@ -396,10 +422,16 @@ const removeCartItem = (user) => {
                 type="text"
                 value={addUserDataPhone}
                 placeholder="Your phone"
-                onChange={(e)=>setAddUserDataPhone(e.target.value)}
+                onChange={(e) => setAddUserDataPhone(e.target.value)}
               />
-              <Button type='button' className='m-3' variant="primary"  onClick={()=>addUserData()}>Add User</Button>
-              
+              <Button
+                type="button"
+                className="m-3"
+                variant="primary"
+                onClick={() => addUserData()}
+              >
+                Add User
+              </Button>
             </Form>
           </div>
         </Modal.Body>
@@ -412,27 +444,33 @@ const removeCartItem = (user) => {
       {/* Add Modal End */}
 
       <Modal show={cartModal} onHide={() => setCartModal(false)} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>User Cart Details</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    {
-                        userSelectData.length > 0 &&
-                        userSelectData.map((item, index) => {
-                            return (
-                                <Card key={index} style={{ width: '100%', marginBottom: '5px' }}>
-                                    <Card.Body>
-                                        <Card.Title>{item.name} </Card.Title>
-                                        <p>{item.email} </p>
-                                        <p> {item.phone}</p>
-                                        <Button variant="danger" onClick={() => removeCartItem(item)}>X</Button>
-                                    </Card.Body>
-                                </Card>
-                            )
-                        })
-                    }
-                </Modal.Body>
-            </Modal>
+        <Modal.Header closeButton>
+          <Modal.Title>User Cart Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {userSelectData.length > 0 &&
+            userSelectData.map((item, index) => {
+              return (
+                <Card
+                  key={index}
+                  style={{ width: '100%', marginBottom: '5px' }}
+                >
+                  <Card.Body>
+                    <Card.Title>{item.name} </Card.Title>
+                    <p>{item.email} </p>
+                    <p> {item.phone}</p>
+                    <Button
+                      variant="danger"
+                      onClick={() => removeCartItem(item)}
+                    >
+                      X
+                    </Button>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };

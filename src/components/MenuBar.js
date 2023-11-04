@@ -12,6 +12,7 @@ const MenuBar = () => {
             <Nav.Link href="/taskapp">Todo Task App</Nav.Link>
             <Nav.Link href="/task/newtodo">NewTodo App</Nav.Link>
             <Nav.Link href="/json/usercrud">Json Placeholder Crud</Nav.Link>
+            <Nav.Link href="/jsonserver/newuserlist">Json Server Crud</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

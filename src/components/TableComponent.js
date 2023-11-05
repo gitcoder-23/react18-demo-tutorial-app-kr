@@ -9,7 +9,6 @@ const TableComponent = ({
   deleteUser,
   selectUser,
   userSelectData,
-  selectButtonDisabled,
 }) => {
   console.log('userSelectData=>', userSelectData);
   return (

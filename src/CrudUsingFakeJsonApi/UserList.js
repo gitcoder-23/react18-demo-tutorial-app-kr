@@ -242,7 +242,6 @@ const UserList = () => {
             deleteUser={deleteUser}
             selectUser={selectUser}
             userSelectData={userSelectData}
-            selectButtonDisabled={selectButtonDisabled}
           />
         </>
       )}

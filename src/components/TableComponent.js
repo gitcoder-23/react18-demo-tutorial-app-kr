@@ -8,8 +8,10 @@ const TableComponent = ({
   editUser,
   deleteUser,
   selectUser,
+  userSelectData,
   selectButtonDisabled,
 }) => {
+  console.log('userSelectData=>', userSelectData);
   return (
     <Table striped bordered hover variant="dark" className="mt-4">
       <thead>
@@ -72,7 +74,9 @@ const TableComponent = ({
                       className="mx-1"
                       variant="light"
                       onClick={() => selectUser(udata)}
-                      disabled={selectButtonDisabled}
+                      disabled={userSelectData.some(
+                        (selectedItem) => selectedItem.id === udata.id
+                      )}
                     >
                       Select
                     </Button>

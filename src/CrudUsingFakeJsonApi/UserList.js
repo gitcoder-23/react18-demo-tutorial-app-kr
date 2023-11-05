@@ -161,17 +161,20 @@ const UserList = () => {
   };
 
   const selectUser = (crr) => {
-    let isPresent = false;
-    userSelectData.forEach((data) => {
-      if (data.id === crr.id) {
-        isPresent = true;
-      }
-    });
-    if (isPresent) {
-      return;
-    }
+    // let isPresent = false;
+    // userSelectData.map((data) => {
+    //   console.log('data=>', data);
+    //   if (data.id === crr.id) {
+    //     isPresent = true;
+    //   }
+    //   return data;
+    // });
+    // if (isPresent) {
+    //   return;
+    // }
+    if (userSelectData.indexOf(crr) !== -1) return;
     setUserSelectData([...userSelectData, crr]);
-    setSelectButtonDisabled(true);
+    // setSelectButtonDisabled(true);
   };
   const viewCartitem = () => {
     setCartModal(true);
@@ -310,6 +313,7 @@ const UserList = () => {
             editUser={editUser}
             deleteUser={deleteUser}
             selectUser={selectUser}
+            userSelectData={userSelectData}
             selectButtonDisabled={selectButtonDisabled}
           />
         </>

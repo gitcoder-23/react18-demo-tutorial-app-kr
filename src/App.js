@@ -6,10 +6,11 @@ import MenuBar from './components/MenuBar';
 import TaskTodoApp from './demoApps/TaskTodoApp';
 import UserList from './CrudUsingFakeJsonApi/UserList';
 import NewUserList from './CrudRealJsonServer/NewUserList';
+import ViewUserDetail from './CrudRealJsonServer/ViewUserDetail';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App container">
       <MenuBar />
       <h1>React Demo Application</h1>
       <Routes>
@@ -20,6 +21,11 @@ function App() {
 
         {/* CRUD App Using JSON Server */}
         <Route exact path="/jsonserver/newuserlist" element={<NewUserList />} />
+        <Route
+          exact
+          path="/jsonserver/viewuser/:vid"
+          element={<ViewUserDetail />}
+        />
       </Routes>
     </div>
   );

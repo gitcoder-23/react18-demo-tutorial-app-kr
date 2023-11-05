@@ -23,10 +23,26 @@ const NewUserList = () => {
   }, []);
 
   const viewClick = (vdata) => {
-    console.log('vdata=>', vdata);
+    // console.log('vdata=>', vdata);
     navigate(`/jsonserver/viewuser/${vdata.id}`, {
       state: { singleUser: vdata },
     });
+  };
+
+  const deleteClick = (dData) => {
+    if (window.confirm('Do you want?')) {
+      axios
+        .delete(
+          `${process.env.REACT_APP_JSON_SERVER_BASE_URL}/user/${dData.id}`
+        )
+        .then((resp) => {
+          console.log('resp=>', resp);
+          getAllUsers();
+        })
+        .catch((err) => {
+          console.log('err=>', err);
+        });
+    }
   };
 
   return (
@@ -65,7 +81,10 @@ const NewUserList = () => {
                       Edit
                     </button>
                     &nbsp;&nbsp;&nbsp;
-                    <button className="btn btn-danger" onClick={() => {}}>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => deleteClick(udata)}
+                    >
                       Delete
                     </button>
                   </td>

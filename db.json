@@ -53,68 +53,6 @@
       "gender": "male",
       "active": true,
       "id": "9775e298-308d-47ad-a0d0-2e27c1126f26"
-    },
-    {
-      "employeename": "Krishna",
-      "email": "test@test.com",
-      "phone": "7894561258",
-      "technology": [
-        {
-          "value": "angular",
-          "label": "Angular"
-        },
-        {
-          "value": "node",
-          "label": "Node"
-        },
-        {
-          "value": "react",
-          "label": "React"
-        }
-      ],
-      "gender": "male",
-      "active": true,
-      "id": "4080df59-d2a2-4309-abeb-ea20d3df3843"
-    },
-    {
-      "employeename": "Krishna Jain1",
-      "email": "test@test.com",
-      "phone": "7894561258",
-      "technology": [
-        {
-          "value": "react",
-          "label": "React"
-        },
-        {
-          "value": "node",
-          "label": "Node"
-        }
-      ],
-      "gender": "female",
-      "active": false,
-      "id": "36fb6a4e-3f42-466d-8d77-624efd20f828"
-    },
-    {
-      "employeename": "Krishna Jain",
-      "email": "test@test.com",
-      "phone": "9894561258",
-      "technology": [
-        {
-          "value": "react",
-          "label": "React"
-        },
-        {
-          "value": "node",
-          "label": "Node"
-        },
-        {
-          "value": "angular",
-          "label": "Angular"
-        }
-      ],
-      "gender": "others",
-      "active": true,
-      "id": "1575ee71-ad79-48b2-8fe2-5e74eaaacf93"
     }
   ]
 }

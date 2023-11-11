@@ -1,7 +1,8 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../config";
 
 const NewUserList = () => {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ const NewUserList = () => {
         setAllUSerDatas(resp.data.reverse());
       })
       .catch((err) => {
-        console.log('err=>', err);
+        console.log("err=>", err);
       });
   };
 
@@ -30,24 +31,29 @@ const NewUserList = () => {
   };
 
   const deleteClick = (dData) => {
-    if (window.confirm('Do you want?')) {
+    if (window.confirm("Do you want?")) {
       axios
-        .delete(
-          `${process.env.REACT_APP_JSON_SERVER_BASE_URL}/user/${dData.id}`
-        )
+        .delete(`${baseUrl}/user/${dData.id}`)
         .then((resp) => {
-          console.log('resp=>', resp);
+          console.log("resp=>", resp);
           getAllUsers();
         })
         .catch((err) => {
-          console.log('err=>', err);
+          console.log("err=>", err);
         });
     }
+  };
+
+  const addUser = () => {
+    navigate("/jsonserver/add/newuser");
   };
 
   return (
     <div className="container">
       <h2>CRUD Using Json Sever</h2>
+      <button className="btn btn-primary m-4" onClick={() => addUser()}>
+        Add User +
+      </button>
       <Table striped bordered hover>
         <thead>
           <tr>

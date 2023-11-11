@@ -1,16 +1,19 @@
-import './App.css';
-import TodoApp from '../src/demoApps/TodoApp';
-import NewTodoApp from './demoApps/NewTodoApp';
-import { Route, Routes } from 'react-router-dom';
-import MenuBar from './components/MenuBar';
-import TaskTodoApp from './demoApps/TaskTodoApp';
-import UserList from './CrudUsingFakeJsonApi/UserList';
-import NewUserList from './CrudRealJsonServer/NewUserList';
-import ViewUserDetail from './CrudRealJsonServer/ViewUserDetail';
+import "./App.css";
+import TodoApp from "../src/demoApps/TodoApp";
+import NewTodoApp from "./demoApps/NewTodoApp";
+import { Route, Routes } from "react-router-dom";
+import MenuBar from "./components/MenuBar";
+import TaskTodoApp from "./demoApps/TaskTodoApp";
+import UserList from "./CrudUsingFakeJsonApi/UserList";
+import NewUserList from "./CrudRealJsonServer/NewUserList";
+import ViewUserDetail from "./CrudRealJsonServer/ViewUserDetail";
+import AddNewUser from "./CrudRealJsonServer/AddNewUser";
+import { ToastMessageComponent } from "./components/ToastMessageComponent";
 
 function App() {
   return (
     <div className="App container">
+      <ToastMessageComponent />
       <MenuBar />
       <h1>React Demo Application</h1>
       <Routes>
@@ -21,6 +24,7 @@ function App() {
 
         {/* CRUD App Using JSON Server */}
         <Route exact path="/jsonserver/newuserlist" element={<NewUserList />} />
+        <Route exact path="/jsonserver/add/newuser" element={<AddNewUser />} />
         <Route
           exact
           path="/jsonserver/viewuser/:vid"

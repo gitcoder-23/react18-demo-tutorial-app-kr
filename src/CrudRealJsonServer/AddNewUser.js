@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { baseUrl } from "../config";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AddNewUser = () => {
+  const navigate = useNavigate();
   const [userFormState, setUserFormState] = useState({
     userName: "",
     userEmail: "",
@@ -37,6 +38,8 @@ const AddNewUser = () => {
         .post(`${baseUrl}/user/`, newData)
         .then((addRsp) => {
           console.log("addRsp=>", addRsp);
+
+          navigate("/jsonserver/newuserlist");
         })
         .catch((error) => {
           console.log("error=>", error);

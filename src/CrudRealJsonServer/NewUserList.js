@@ -48,6 +48,13 @@ const NewUserList = () => {
     navigate("/jsonserver/add/newuser");
   };
 
+  const editClick = (eData) => {
+    console.log("eData=>", eData);
+    navigate(`/jsonserver/edituser/${eData.id}`, {
+      state: { singleUser: eData },
+    });
+  };
+
   return (
     <div className="container">
       <h2>CRUD Using Json Sever</h2>
@@ -83,7 +90,10 @@ const NewUserList = () => {
                       View
                     </button>
                     &nbsp;&nbsp;&nbsp;
-                    <button className="btn btn-warning" onClick={() => {}}>
+                    <button
+                      className="btn btn-warning"
+                      onClick={() => editClick(udata)}
+                    >
                       Edit
                     </button>
                     &nbsp;&nbsp;&nbsp;

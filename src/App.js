@@ -9,6 +9,7 @@ import NewUserList from "./CrudRealJsonServer/NewUserList";
 import ViewUserDetail from "./CrudRealJsonServer/ViewUserDetail";
 import AddNewUser from "./CrudRealJsonServer/AddNewUser";
 import { ToastMessageComponent } from "./components/ToastMessageComponent";
+import EditNewUser from "./CrudRealJsonServer/EditNewUser";
 
 function App() {
   return (
@@ -25,6 +26,11 @@ function App() {
         {/* CRUD App Using JSON Server */}
         <Route exact path="/jsonserver/newuserlist" element={<NewUserList />} />
         <Route exact path="/jsonserver/add/newuser" element={<AddNewUser />} />
+        <Route
+          exact
+          path="/jsonserver/edituser/:eid"
+          element={<EditNewUser />}
+        />
         <Route
           exact
           path="/jsonserver/viewuser/:vid"

@@ -3,25 +3,54 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { baseUrl } from "../config";
 import { toast } from "react-toastify";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 import { Link, useNavigate } from "react-router-dom";
 
 const AddNewUser = () => {
+  const animatedComponents = makeAnimated();
   const navigate = useNavigate();
   const [userFormState, setUserFormState] = useState({
     userName: "",
     userEmail: "",
     userPhone: "",
     userGender: "",
+    technology: [],
   });
+  const techOptions = [
+    {
+      value: "angular",
+      label: "Angular",
+    },
+    {
+      value: "node",
+      label: "Node",
+    },
+    {
+      value: "react",
+      label: "React",
+    },
+    {
+      value: "vue",
+      label: "Vue",
+    },
+  ];
 
-  console.log("userFormState=>", userFormState.userGender);
-
+  const onSelectChange = (optionData) => {
+    console.log("optionData=>", optionData);
+    setUserFormState({
+      ...userFormState,
+      technology: [...optionData],
+    });
+  };
+  console.log("userFormState=>", userFormState.technology);
   const addNewUser = () => {
     if (
       !userFormState.userName ||
       !userFormState.userEmail ||
       !userFormState.userPhone ||
-      !userFormState.userGender
+      !userFormState.userGender ||
+      userFormState.technology.length === 0
     ) {
       toast.error("Please fill all the fields!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -33,13 +62,22 @@ const AddNewUser = () => {
         email: userFormState.userEmail,
         phone: userFormState.userPhone,
         gender: userFormState.userGender,
+        technology: userFormState.technology,
       };
       axios
         .post(`${baseUrl}/user/`, newData)
         .then((addRsp) => {
           console.log("addRsp=>", addRsp);
-
-          navigate("/jsonserver/newuserlist");
+          if (addRsp.status === 201) {
+            setUserFormState({
+              userName: "",
+              userEmail: "",
+              userPhone: "",
+              userGender: "",
+              technology: [],
+            });
+            navigate("/jsonserver/newuserlist");
+          }
         })
         .catch((error) => {
           console.log("error=>", error);
@@ -116,6 +154,19 @@ const AddNewUser = () => {
                 <option value="female">Female</option>
                 <option value="others">Others</option>
               </Form.Select>
+            </Form.Group>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-3">
+            <Form.Group className="mb-3">
+              <Form.Label>Technology</Form.Label>
+              <Select
+                isMulti
+                options={techOptions}
+                components={animatedComponents}
+                onChange={(option) => onSelectChange(option)}
+              />
             </Form.Group>
           </div>
         </div>

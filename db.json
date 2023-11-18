@@ -35,6 +35,52 @@
       "phone": "9874561235",
       "gender": "others",
       "id": "9775e298-308d-47ad-a0d0-2e27c1126f26"
+    },
+    {
+      "id": 1700295132693,
+      "employeename": "Mohan Kumar",
+      "email": "mohan@yahoo.com",
+      "phone": "8975482147",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        },
+        {
+          "value": "node",
+          "label": "Node"
+        }
+      ]
+    },
+    {
+      "id": 1700295174834,
+      "employeename": "Raju Kumar",
+      "email": "raju@yahoo.com",
+      "phone": "7875482147",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        },
+        {
+          "value": "node",
+          "label": "Node"
+        }
+      ]
     }
   ]
 }

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { baseUrl } from "../config";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const AddNewUser = () => {
   const [userFormState, setUserFormState] = useState({
@@ -115,9 +116,17 @@ const AddNewUser = () => {
             </Form.Group>
           </div>
         </div>
-
         <Button variant="primary" type="button" onClick={addNewUser}>
           Submit
+        </Button>{" "}
+        &nbsp;
+        <Button variant="secondary" type="button">
+          <Link
+            to="/jsonserver/newuserlist"
+            style={{ color: "#fff", textDecoration: "none" }}
+          >
+            Back
+          </Link>
         </Button>
       </Form>
     </div>

@@ -158,7 +158,7 @@ const AddNewUser = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-4">
             <Form.Group className="mb-3">
               <Form.Label>Technology</Form.Label>
               <Select

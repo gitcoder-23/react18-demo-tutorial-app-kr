@@ -4,8 +4,11 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../config";
 import { toast } from "react-toastify";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 
 const EditNewUser = () => {
+  const animatedComponents = makeAnimated();
   const navigate = useNavigate();
   const { eid } = useParams();
   console.log("eid=>", eid);
@@ -19,12 +22,40 @@ const EditNewUser = () => {
     userEmail: state.singleUser.email || "",
     userPhone: state.singleUser.phone || "",
     userGender: state.singleUser.gender || "",
+    technology: state.singleUser.technology || [],
   });
 
   const onInputChange = (evt) => {
     setUserFormEditState({
       ...userFormEditState,
       [evt.target.name]: evt.target.value,
+    });
+  };
+
+  const techOptions = [
+    {
+      value: "angular",
+      label: "Angular",
+    },
+    {
+      value: "node",
+      label: "Node",
+    },
+    {
+      value: "react",
+      label: "React",
+    },
+    {
+      value: "vue",
+      label: "Vue",
+    },
+  ];
+
+  const onSelectChange = (optionData) => {
+    console.log("optionData=>", optionData);
+    setUserFormEditState({
+      ...userFormEditState,
+      technology: [...optionData],
     });
   };
 
@@ -51,7 +82,8 @@ const EditNewUser = () => {
       !userFormEditState.userName ||
       !userFormEditState.userEmail ||
       !userFormEditState.userPhone ||
-      !userFormEditState.userGender
+      !userFormEditState.userGender ||
+      userFormEditState.technology.length === 0
     ) {
       toast.error("Please fill all the fields!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -62,6 +94,7 @@ const EditNewUser = () => {
         email: userFormEditState.userEmail,
         phone: userFormEditState.userPhone,
         gender: userFormEditState.userGender,
+        technology: userFormEditState.technology,
       };
       axios
         .put(`${baseUrl}/user/${eid}`, newData)
@@ -139,6 +172,20 @@ const EditNewUser = () => {
                   );
                 })}
               </Form.Select>
+            </Form.Group>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <Form.Group className="mb-3">
+              <Form.Label>Technology</Form.Label>
+              <Select
+                isMulti
+                options={techOptions}
+                components={animatedComponents}
+                value={userFormEditState.technology}
+                onChange={(e) => onSelectChange(e)}
+              />
             </Form.Group>
           </div>
         </div>

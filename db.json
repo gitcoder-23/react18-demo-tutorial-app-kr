@@ -27,6 +27,16 @@
       "email": "john@yahoo.com",
       "phone": "98745468521",
       "gender": "male",
+      "technology": [
+        {
+          "value": "node",
+          "label": "Node"
+        },
+        {
+          "value": "angular",
+          "label": "Angular"
+        }
+      ],
       "id": "40e5a1ab-4d05-4512-bb13-bf6ce3995271"
     },
     {
@@ -34,6 +44,24 @@
       "email": "tarun1@yahoo.com",
       "phone": "9874561235",
       "gender": "others",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        },
+        {
+          "value": "node",
+          "label": "Node"
+        }
+      ],
       "id": "9775e298-308d-47ad-a0d0-2e27c1126f26"
     },
     {
@@ -62,7 +90,6 @@
       ]
     },
     {
-      "id": 1700295174834,
       "employeename": "Raju Kumar",
       "email": "raju@yahoo.com",
       "phone": "7875482147",
@@ -71,16 +98,9 @@
         {
           "value": "angular",
           "label": "Angular"
-        },
-        {
-          "value": "vue",
-          "label": "Vue"
-        },
-        {
-          "value": "node",
-          "label": "Node"
         }
-      ]
+      ],
+      "id": 1700295174834
     }
   ]
 }

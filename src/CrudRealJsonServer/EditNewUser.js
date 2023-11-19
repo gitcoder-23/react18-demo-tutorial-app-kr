@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../config";
 import { toast } from "react-toastify";
@@ -21,6 +21,7 @@ const EditNewUser = () => {
     userGender: state.singleUser.gender || "",
     technology: state.singleUser.technology || [],
     userPerformance: state.singleUser.performance || "",
+    userDetails: state.singleUser.details || "",
   });
 
   const onInputChange = (evt) => {
@@ -82,7 +83,8 @@ const EditNewUser = () => {
       !userFormEditState.userPhone ||
       !userFormEditState.userGender ||
       userFormEditState.technology.length === 0 ||
-      !userFormEditState.userPerformance
+      !userFormEditState.userPerformance ||
+      !userFormEditState.userDetails
     ) {
       toast.error("Please fill all the fields!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -95,6 +97,7 @@ const EditNewUser = () => {
         gender: userFormEditState.userGender,
         technology: userFormEditState.technology,
         performance: userFormEditState.userPerformance,
+        details: userFormEditState.userDetails,
       };
       axios
         .put(`${baseUrl}/user/${eid}`, newData)
@@ -112,7 +115,10 @@ const EditNewUser = () => {
         });
     }
   };
-
+  console.log(
+    "userFormEditState.userDetails==>",
+    userFormEditState.userDetails
+  );
   return (
     <div className="container">
       <Form>
@@ -227,6 +233,23 @@ const EditNewUser = () => {
                 }
               />
               &nbsp;&nbsp;&nbsp;
+            </Form.Group>
+          </div>
+          <div className="col-md-4">
+            <Form.Group className="mb-3">
+              <Form.Label>User Details</Form.Label>
+              <FloatingLabel
+                controlId="floatingTextarea2"
+                label="Write details here"
+              >
+                <Form.Control
+                  as="textarea"
+                  placeholder="Write details here"
+                  name="userDetails"
+                  value={userFormEditState.userDetails}
+                  onChange={(e) => onInputChange(e)}
+                />
+              </FloatingLabel>
             </Form.Group>
           </div>
         </div>

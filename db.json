@@ -195,6 +195,26 @@
       "performance": "best",
       "details": "Test the user if available or not.",
       "id": 1700380006564
+    },
+    {
+      "id": 1700380945922,
+      "employeename": "Rohan Singh",
+      "email": "rohan@yahoo.com",
+      "phone": "8964125847",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        }
+      ],
+      "performance": "best",
+      "details": "Good mEmployee",
+      "status": true
     }
   ]
 }

@@ -18,6 +18,7 @@ const AddNewUser = () => {
     technology: [],
     userPerformance: "",
     userDetails: "",
+    userStatus: false,
   });
   const techOptions = [
     {
@@ -65,6 +66,8 @@ const AddNewUser = () => {
       userFormState.technology.length === 0 ||
       !userFormState.userPerformance ||
       !userFormState.userDetails
+      // ||
+      // userFormState.userStatus === false
     ) {
       toast.error("Please fill all the fields!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -79,6 +82,7 @@ const AddNewUser = () => {
         technology: userFormState.technology,
         performance: userFormState.userPerformance,
         details: userFormState.userDetails,
+        status: userFormState.userStatus,
       };
       axios
         .post(`${baseUrl}/user/`, newData)
@@ -103,6 +107,7 @@ const AddNewUser = () => {
         });
     }
   };
+  console.log("userFormState=>", userFormState.userStatus);
   return (
     <div className="container">
       <Form>
@@ -250,6 +255,31 @@ const AddNewUser = () => {
                   }}
                 />
               </FloatingLabel>
+            </Form.Group>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6">
+            <Form.Group className="mb-3">
+              <Form.Label>User Status</Form.Label>{" "}
+              <Form.Check
+                inline
+                label={
+                  userFormState.userStatus === true
+                    ? "Active User"
+                    : "Inactive User"
+                }
+                name="userStatus"
+                type="checkbox"
+                value=""
+                checked={userFormState.userStatus}
+                onChange={(e) =>
+                  setUserFormState({
+                    ...userFormState,
+                    userStatus: e.target.checked,
+                  })
+                }
+              />
             </Form.Group>
           </div>
         </div>

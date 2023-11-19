@@ -222,6 +222,31 @@
       "details": "Good mEmployee",
       "status": false,
       "id": 1700380945922
+    },
+    {
+      "id": 1700382496717,
+      "employeename": "Linda Rose",
+      "email": "linda@yahoo.com",
+      "phone": "4584741478",
+      "gender": "female",
+      "technology": [
+        {
+          "value": "node",
+          "label": "Node"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "angular",
+          "label": "Angular"
+        }
+      ],
+      "performance": "better",
+      "details": "Check Linda",
+      "status": true,
+      "fulldetails": "<p>Good and new user for the database.</p>"
     }
   ]
 }

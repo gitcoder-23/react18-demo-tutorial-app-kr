@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { Link, useNavigate } from "react-router-dom";
+import ReactQuill from "react-quill";
 
 const AddNewUser = () => {
   const animatedComponents = makeAnimated();
@@ -20,6 +21,8 @@ const AddNewUser = () => {
     userDetails: "",
     userStatus: false,
   });
+
+  const [userFullDetails, setUserFullDetails] = useState("");
   const techOptions = [
     {
       value: "angular",
@@ -65,7 +68,8 @@ const AddNewUser = () => {
       !userFormState.userGender ||
       userFormState.technology.length === 0 ||
       !userFormState.userPerformance ||
-      !userFormState.userDetails
+      !userFormState.userDetails ||
+      !userFullDetails
       // ||
       // userFormState.userStatus === false
     ) {
@@ -83,6 +87,7 @@ const AddNewUser = () => {
         performance: userFormState.userPerformance,
         details: userFormState.userDetails,
         status: userFormState.userStatus,
+        fulldetails: userFullDetails,
       };
       axios
         .post(`${baseUrl}/user/`, newData)
@@ -107,7 +112,7 @@ const AddNewUser = () => {
         });
     }
   };
-  console.log("userFormState=>", userFormState.userStatus);
+  console.log("userFullDetails=>", userFullDetails);
   return (
     <div className="container">
       <Form>
@@ -279,6 +284,16 @@ const AddNewUser = () => {
                     userStatus: e.target.checked,
                   })
                 }
+              />
+            </Form.Group>
+          </div>
+          <div className="col-md-6">
+            <Form.Group className="mb-3">
+              <Form.Label>User Status</Form.Label>{" "}
+              <ReactQuill
+                theme="snow"
+                value={userFullDetails}
+                onChange={setUserFullDetails}
               />
             </Form.Group>
           </div>

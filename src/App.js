@@ -10,6 +10,7 @@ import ViewUserDetail from "./CrudRealJsonServer/ViewUserDetail";
 import AddNewUser from "./CrudRealJsonServer/AddNewUser";
 import { ToastMessageComponent } from "./components/ToastMessageComponent";
 import EditNewUser from "./CrudRealJsonServer/EditNewUser";
+import RejexUserValidation from "./regexvalidation/RejexUserValidation";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           path="/jsonserver/viewuser/:vid"
           element={<ViewUserDetail />}
         />
+        <Route exact path="/validation/regexvalidation" element={<RejexUserValidation/>} />
       </Routes>
     </div>
   );

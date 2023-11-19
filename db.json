@@ -124,17 +124,17 @@
       "id": 1700333011189
     },
     {
-      "id": 1700376696843,
       "employeename": "dfgdfg",
       "email": "atuny0@sohu.comm",
       "phone": "+21 791 675 8914",
-      "gender": "--Select Gender--",
+      "gender": "female",
       "technology": [
         {
           "label": "Node",
           "value": "node"
         }
-      ]
+      ],
+      "id": 1700376696843
     },
     {
       "id": 1700376841699,

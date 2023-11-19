@@ -16,6 +16,7 @@ const AddNewUser = () => {
     userPhone: "",
     userGender: "",
     technology: [],
+    userPerformance: "",
   });
   const techOptions = [
     {
@@ -43,14 +44,25 @@ const AddNewUser = () => {
       technology: [...optionData],
     });
   };
-  console.log("userFormState=>", userFormState.technology);
+
+  const onRadioChange = (radEvt) => {
+    console.log("radioVal=>", radEvt.target.value);
+    setUserFormState({
+      ...userFormState,
+      userPerformance: radEvt.target.value,
+    });
+  };
+
+  console.log("userFormState=>", userFormState.userPerformance);
+
   const addNewUser = () => {
     if (
       !userFormState.userName ||
       !userFormState.userEmail ||
       !userFormState.userPhone ||
       !userFormState.userGender ||
-      userFormState.technology.length === 0
+      userFormState.technology.length === 0 ||
+      !userFormState.userPerformance
     ) {
       toast.error("Please fill all the fields!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -63,12 +75,16 @@ const AddNewUser = () => {
         phone: userFormState.userPhone,
         gender: userFormState.userGender,
         technology: userFormState.technology,
+        performance: userFormState.userPerformance,
       };
       axios
         .post(`${baseUrl}/user/`, newData)
         .then((addRsp) => {
           console.log("addRsp=>", addRsp);
           if (addRsp.status === 201) {
+            toast.success("User saved successful!", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
             setUserFormState({
               userName: "",
               userEmail: "",
@@ -167,6 +183,49 @@ const AddNewUser = () => {
                 components={animatedComponents}
                 onChange={(option) => onSelectChange(option)}
               />
+            </Form.Group>
+          </div>
+
+          <div className="col-md-4">
+            <Form.Group className="mb-3">
+              <Form.Label>Employee Performance</Form.Label>
+              <br />
+              <Form.Check
+                inline
+                label="Good"
+                name="Good"
+                value="good"
+                type="radio"
+                onChange={(e) => onRadioChange(e)}
+                checked={
+                  userFormState.userPerformance === "good" ? true : false
+                }
+              />
+              &nbsp;&nbsp;&nbsp;
+              <Form.Check
+                inline
+                label="Better"
+                name="Better"
+                value="better"
+                type="radio"
+                onChange={(e) => onRadioChange(e)}
+                checked={
+                  userFormState.userPerformance === "better" ? true : false
+                }
+              />
+              &nbsp;&nbsp;&nbsp;
+              <Form.Check
+                inline
+                label="Best"
+                name="Best"
+                value="best"
+                type="radio"
+                onChange={(e) => onRadioChange(e)}
+                checked={
+                  userFormState.userPerformance === "best" ? true : false
+                }
+              />
+              &nbsp;&nbsp;&nbsp;
             </Form.Group>
           </div>
         </div>

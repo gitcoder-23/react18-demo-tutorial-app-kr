@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, FloatingLabel, Form } from "react-bootstrap";
 import { baseUrl } from "../config";
 import { toast } from "react-toastify";
 import Select from "react-select";
@@ -17,6 +17,7 @@ const AddNewUser = () => {
     userGender: "",
     technology: [],
     userPerformance: "",
+    userDetails: "",
   });
   const techOptions = [
     {
@@ -62,7 +63,8 @@ const AddNewUser = () => {
       !userFormState.userPhone ||
       !userFormState.userGender ||
       userFormState.technology.length === 0 ||
-      !userFormState.userPerformance
+      !userFormState.userPerformance ||
+      !userFormState.userDetails
     ) {
       toast.error("Please fill all the fields!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -76,6 +78,7 @@ const AddNewUser = () => {
         gender: userFormState.userGender,
         technology: userFormState.technology,
         performance: userFormState.userPerformance,
+        details: userFormState.userDetails,
       };
       axios
         .post(`${baseUrl}/user/`, newData)
@@ -188,7 +191,7 @@ const AddNewUser = () => {
 
           <div className="col-md-4">
             <Form.Group className="mb-3">
-              <Form.Label>Employee Performance</Form.Label>
+              <Form.Label>User Performance</Form.Label>
               <br />
               <Form.Check
                 inline
@@ -201,7 +204,7 @@ const AddNewUser = () => {
                   userFormState.userPerformance === "good" ? true : false
                 }
               />
-              &nbsp;&nbsp;&nbsp;
+
               <Form.Check
                 inline
                 label="Better"
@@ -213,7 +216,7 @@ const AddNewUser = () => {
                   userFormState.userPerformance === "better" ? true : false
                 }
               />
-              &nbsp;&nbsp;&nbsp;
+
               <Form.Check
                 inline
                 label="Best"
@@ -225,7 +228,28 @@ const AddNewUser = () => {
                   userFormState.userPerformance === "best" ? true : false
                 }
               />
-              &nbsp;&nbsp;&nbsp;
+            </Form.Group>
+          </div>
+
+          <div className="col-md-4">
+            <Form.Group className="mb-3">
+              <Form.Label>User Details</Form.Label>
+              <FloatingLabel
+                controlId="floatingTextarea2"
+                label="Write details here"
+              >
+                <Form.Control
+                  as="textarea"
+                  placeholder="Write details here"
+                  value={userFormState.userDetails}
+                  onChange={(e) => {
+                    setUserFormState({
+                      ...userFormState,
+                      userDetails: e.target.value,
+                    });
+                  }}
+                />
+              </FloatingLabel>
             </Form.Group>
           </div>
         </div>

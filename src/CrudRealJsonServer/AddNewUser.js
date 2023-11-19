@@ -112,7 +112,7 @@ const AddNewUser = () => {
         });
     }
   };
-  console.log("userFullDetails=>", userFullDetails);
+
   return (
     <div className="container">
       <Form>

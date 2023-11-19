@@ -6,6 +6,7 @@ import { baseUrl } from "../config";
 import { toast } from "react-toastify";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import ReactQuill from "react-quill";
 
 const EditNewUser = () => {
   const animatedComponents = makeAnimated();
@@ -24,7 +25,9 @@ const EditNewUser = () => {
     userDetails: state.singleUser.details || "",
     userStatus: state.singleUser.status || false,
   });
-
+  const [userFullDetails, setUserFullDetails] = useState(
+    state.singleUser.fulldetails || ""
+  );
   const onInputChange = (evt) => {
     setUserFormEditState({
       ...userFormEditState,
@@ -85,7 +88,8 @@ const EditNewUser = () => {
       !userFormEditState.userGender ||
       userFormEditState.technology.length === 0 ||
       !userFormEditState.userPerformance ||
-      !userFormEditState.userDetails
+      !userFormEditState.userDetails ||
+      !userFullDetails
       // ||
       // userFormEditState.userStatus === false
     ) {
@@ -102,6 +106,7 @@ const EditNewUser = () => {
         performance: userFormEditState.userPerformance,
         details: userFormEditState.userDetails,
         status: userFormEditState.userStatus,
+        fulldetails: userFullDetails,
       };
       axios
         .put(`${baseUrl}/user/${eid}`, newData)
@@ -119,10 +124,7 @@ const EditNewUser = () => {
         });
     }
   };
-  console.log(
-    "userFormEditState.userDetails==>",
-    userFormEditState.userDetails
-  );
+  console.log("userFullDetails=>", userFullDetails);
   return (
     <div className="container">
       <Form>
@@ -278,6 +280,16 @@ const EditNewUser = () => {
                     userStatus: e.target.checked,
                   })
                 }
+              />
+            </Form.Group>
+          </div>
+          <div className="col-md-6">
+            <Form.Group className="mb-3">
+              <Form.Label>User Status</Form.Label>{" "}
+              <ReactQuill
+                theme="snow"
+                value={userFullDetails}
+                onChange={setUserFullDetails}
               />
             </Form.Group>
           </div>

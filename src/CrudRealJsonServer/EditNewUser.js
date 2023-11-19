@@ -11,11 +11,8 @@ const EditNewUser = () => {
   const animatedComponents = makeAnimated();
   const navigate = useNavigate();
   const { eid } = useParams();
-  console.log("eid=>", eid);
 
   const { state } = useLocation();
-
-  console.log("state=>", state);
 
   const [userFormEditState, setUserFormEditState] = useState({
     userName: state.singleUser.employeename || "",
@@ -77,11 +74,6 @@ const EditNewUser = () => {
       gvale: "others",
     },
   ];
-  console.log("optionData=>", userFormEditState.userPerformance);
-
-  // const onRadioChange = (evtRad) => {
-
-  // }
 
   const editSave = () => {
     if (

@@ -46,14 +46,14 @@ const AddNewUser = () => {
   };
 
   const onRadioChange = (radEvt) => {
-    console.log("radioVal=>", radEvt.target.value);
+    // console.log("radioVal=>", radEvt.target.value);
     setUserFormState({
       ...userFormState,
       userPerformance: radEvt.target.value,
     });
   };
 
-  console.log("userFormState=>", userFormState.userPerformance);
+  // console.log("userFormState=>", userFormState.userPerformance);
 
   const addNewUser = () => {
     if (

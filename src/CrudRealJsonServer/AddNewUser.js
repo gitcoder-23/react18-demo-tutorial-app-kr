@@ -264,7 +264,7 @@ const AddNewUser = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-6">
+          <div className="col-md-4">
             <Form.Group className="mb-3">
               <Form.Label>User Status</Form.Label>{" "}
               <Form.Check
@@ -287,7 +287,7 @@ const AddNewUser = () => {
               />
             </Form.Group>
           </div>
-          <div className="col-md-6">
+          <div className="col-md-8">
             <Form.Group className="mb-3">
               <Form.Label>User Status</Form.Label>{" "}
               <ReactQuill

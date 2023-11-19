@@ -247,6 +247,19 @@
       "status": true,
       "fulldetails": "<ul><li><strong><em>Good and new user for the database.</em></strong></li></ul>",
       "id": 1700382496717
+    },
+    {
+      "id": 1700382837495,
+      "employeename": "sds",
+      "email": "gdfgfg",
+      "phone": "7",
+      "gender": "male",
+      "technology": [
+        {
+          "label": "React",
+          "value": "react"
+        }
+      ]
     }
   ]
 }

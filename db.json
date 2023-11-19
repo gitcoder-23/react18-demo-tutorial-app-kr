@@ -104,6 +104,9 @@
           "label": "React"
         }
       ],
+      "performance": "best",
+      "details": "Raju Kumar Test",
+      "status": false,
       "id": 1700295174834
     },
     {
@@ -121,6 +124,9 @@
           "value": "node"
         }
       ],
+      "performance": "good",
+      "details": "Hi There",
+      "status": true,
       "id": 1700333011189
     },
     {
@@ -194,10 +200,10 @@
       ],
       "performance": "best",
       "details": "Test the user if available or not.",
+      "status": true,
       "id": 1700380006564
     },
     {
-      "id": 1700380945922,
       "employeename": "Rohan Singh",
       "email": "rohan@yahoo.com",
       "phone": "8964125847",
@@ -214,7 +220,8 @@
       ],
       "performance": "best",
       "details": "Good mEmployee",
-      "status": true
+      "status": false,
+      "id": 1700380945922
     }
   ]
 }

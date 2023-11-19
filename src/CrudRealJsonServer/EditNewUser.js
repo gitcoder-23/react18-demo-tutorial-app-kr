@@ -22,6 +22,7 @@ const EditNewUser = () => {
     technology: state.singleUser.technology || [],
     userPerformance: state.singleUser.performance || "",
     userDetails: state.singleUser.details || "",
+    userStatus: state.singleUser.status || false,
   });
 
   const onInputChange = (evt) => {
@@ -85,6 +86,8 @@ const EditNewUser = () => {
       userFormEditState.technology.length === 0 ||
       !userFormEditState.userPerformance ||
       !userFormEditState.userDetails
+      // ||
+      // userFormEditState.userStatus === false
     ) {
       toast.error("Please fill all the fields!", {
         position: toast.POSITION.TOP_RIGHT,
@@ -98,6 +101,7 @@ const EditNewUser = () => {
         technology: userFormEditState.technology,
         performance: userFormEditState.userPerformance,
         details: userFormEditState.userDetails,
+        status: userFormEditState.userStatus,
       };
       axios
         .put(`${baseUrl}/user/${eid}`, newData)
@@ -250,6 +254,31 @@ const EditNewUser = () => {
                   onChange={(e) => onInputChange(e)}
                 />
               </FloatingLabel>
+            </Form.Group>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6">
+            <Form.Group className="mb-3">
+              <Form.Label>User Status</Form.Label>{" "}
+              <Form.Check
+                inline
+                label={
+                  userFormEditState.userStatus === true
+                    ? "Active User"
+                    : "Inactive User"
+                }
+                name="userStatus"
+                type="checkbox"
+                value=""
+                checked={userFormEditState.userStatus}
+                onChange={(e) =>
+                  setUserFormEditState({
+                    ...userFormEditState,
+                    userStatus: e.target.checked,
+                  })
+                }
+              />
             </Form.Group>
           </div>
         </div>

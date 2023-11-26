@@ -36,6 +36,7 @@ const LoginPage = () => {
             });
             localStorage.setItem("userdata", JSON.stringify(res.data));
             sessionStorage.setItem("usersessiondata", JSON.stringify(res.data));
+            window.location.reload();
           }
         })
         .catch((err) => {

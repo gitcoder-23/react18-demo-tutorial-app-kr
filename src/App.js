@@ -7,7 +7,6 @@ function App() {
   return (
     <div className="App container">
       <ToastMessageComponent />
-      <MenuBar />
       <h1>React Demo Application</h1>
       <ComponentRoute />
     </div>

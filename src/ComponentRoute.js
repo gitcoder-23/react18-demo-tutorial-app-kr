@@ -9,12 +9,14 @@ import AddNewUser from "./CrudRealJsonServer/AddNewUser";
 import EditNewUser from "./CrudRealJsonServer/EditNewUser";
 import ViewUserDetail from "./CrudRealJsonServer/ViewUserDetail";
 import RejexUserValidation from "./regexvalidation/RejexUserValidation";
+import Login from "./login/LoginPage";
 
 const ComponentRoute = () => {
   return (
     <>
       <Routes>
         <Route exact path="/" element={<TodoApp />} />
+        <Route exact path="/login" element={<Login />} />
         <Route exact path="/taskapp" element={<TaskTodoApp />} />
         <Route exact path="/task/newtodo" element={<NewTodoApp />} />
         <Route exact path="/json/usercrud" element={<UserList />} />

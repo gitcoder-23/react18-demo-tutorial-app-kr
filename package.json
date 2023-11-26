@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "on": "concurrently \"npm start\" \"json-server --watch db.json --port 3029\"",
+    "on": "concurrently \"npm start\" \"json-server --watch db.json --port 3029\" \"json-server --watch dblogin.json --port 3039\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

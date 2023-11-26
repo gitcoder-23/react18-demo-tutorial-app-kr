@@ -251,15 +251,69 @@
     {
       "id": 1700382837495,
       "employeename": "sds",
-      "email": "gdfgfg",
-      "phone": "7",
+      "email": "gdfgfg@asd.asd",
+      "phone": "7321458791",
       "gender": "male",
       "technology": [
         {
           "label": "React",
           "value": "react"
+        },
+        {
+          "value": "anguler",
+          "label": "Anguler"
         }
-      ]
+      ],
+      "empStatus": true,
+      "performance": "good",
+      "emDetails": "hi",
+      "employeeFullDetails": "<p><strong style=\"color: rgb(0, 0, 0);\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0);\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</span></p>"
+    },
+    {
+      "id": 1700976685980,
+      "employeename": "Ankit",
+      "email": "ankit1@gmail.com",
+      "phone": "+21 791 675 8914",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "node",
+          "label": "Node"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        }
+      ],
+      "empStatus": true,
+      "performance": "good",
+      "emDetails": "Hello ankit",
+      "employeeFullDetails": "<p><strong style=\"color: rgb(0, 0, 0);\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0);\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy</span></p>"
+    },
+    {
+      "id": 1700977024096,
+      "employeename": "Ankita",
+      "email": "anki@sdf.xds",
+      "phone": "+10 791 675 8914",
+      "gender": "Female",
+      "technology": [
+        {
+          "value": "node",
+          "label": "Node"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        }
+      ],
+      "empStatus": true,
+      "performance": "good",
+      "emDetails": "ankita",
+      "employeeFullDetails": "<h3><strong style=\"color: rgb(0, 0, 0);\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0);\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </span><strong style=\"color: rgb(0, 0, 0);\">standard dummy</strong></h3>"
     }
   ]
 }

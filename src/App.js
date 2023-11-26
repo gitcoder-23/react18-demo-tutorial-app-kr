@@ -11,6 +11,11 @@ import AddNewUser from "./CrudRealJsonServer/AddNewUser";
 import { ToastMessageComponent } from "./components/ToastMessageComponent";
 import EditNewUser from "./CrudRealJsonServer/EditNewUser";
 import RejexUserValidation from "./regexvalidation/RejexUserValidation";
+import RegexValidation from "./regexvalidation/RegexValidation";
+import RegexViewList from "./regexvalidation/RegexViewList";
+import RegSingleList from "./regexvalidation/RegSingleList";
+import EditRegexSingleEmploy from "./regexvalidation/EditRegexSingleEmploy";
+import AddReactHookForm from "./reactHookForm/AddReactHookForm";
 
 function App() {
   return (
@@ -38,6 +43,13 @@ function App() {
           element={<ViewUserDetail />}
         />
         <Route exact path="/validation/regexvalidation" element={<RejexUserValidation/>} />
+
+        <Route exac path='/regexvalidation' element={<RegexValidation/>} />
+        <Route exac path='/regexvalidation/viewlist' element={<RegexViewList/>} />
+        <Route exac path='/regexvalidation/viewlist/:empID' element={<RegSingleList/>} />
+        <Route exac path='/regexvalidation/viewlist/edit/:id' element={<EditRegexSingleEmploy/>} />
+
+        <Route exac path='/reacthookform/addemployee' element={<AddReactHookForm/>} />
       </Routes>
     </div>
   );

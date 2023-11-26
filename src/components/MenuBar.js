@@ -16,14 +16,17 @@ const MenuBar = () => {
             <Nav.Link href="/json/usercrud">Json Placeholder Crud</Nav.Link>
             <Nav.Link href="/jsonserver/newuserlist">Json Server Crud</Nav.Link>
             <NavDropdown title="Validation" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/validation/regexvalidation">Regex Validation</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown.Item href="/regexvalidation">Add Employee</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item href="/regexvalidation/viewlist">
+               All Employee List
+              </NavDropdown.Item>
+            </NavDropdown>
+            <NavDropdown title="React Hook Form" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/reacthookform/addemployee">React Hook Add</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="/regexvalidation/viewlist">
+               All Employee List
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>

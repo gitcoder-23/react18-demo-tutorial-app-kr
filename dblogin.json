@@ -1,0 +1,34 @@
+{
+  "userlogin": [
+    {
+      "name": "Alita Watson",
+      "email": "utest@yahoo.com",
+      "id": "5dc2a99d-545e-4580-9733-0f7ede1c8ec3"
+    },
+    {
+      "name": "Rahim-23",
+      "email": "rahim@yahoo.com",
+      "id": "OdpUUuC"
+    },
+    {
+      "id": 1700985676616,
+      "name": "Pritam-21",
+      "email": "Pritam@yahoo.com"
+    },
+    {
+      "id": 1700985733247,
+      "name": "Ritam-24",
+      "email": "ritam@yahoo.com"
+    },
+    {
+      "id": 1700986577059,
+      "name": "Rima-45",
+      "email": "rima@yahoo.com"
+    },
+    {
+      "id": 1700987027408,
+      "name": "john-56",
+      "email": "john@gmail.com"
+    }
+  ]
+}

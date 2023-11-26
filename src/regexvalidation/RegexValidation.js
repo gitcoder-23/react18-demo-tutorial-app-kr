@@ -30,7 +30,7 @@ const RegexValidation = () => {
         { value: 'anguler', label: 'Anguler' },
         { value: 'vue', label: 'Vue' }
     ]
-    const [emFullDetails, setEmFullDetails] = useState("")
+    const [emFullDetails, setEmFullDetails] = useState(null)
     //console.log('emFullDetails-', emFullDetails)
 
     const techSelectChange = (option) => {
@@ -79,6 +79,8 @@ const RegexValidation = () => {
             }).catch((err) => console.log('err-', err))
         }
     }
+    console.log('full details value-', emFullDetails)
+    console.log('full details-', errMsg.employeeFullDetails)
     return (
         <div className="my-4">
             <Container>

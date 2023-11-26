@@ -10,7 +10,7 @@ const RegSingleList = () => {
     const { empID } = useParams()
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [singleEmployeeData, setSingleEmployeeData] = useState({})
+    const [singleEmployeeData, setSingleEmployeeData] = useState()
     //console.log('empID-', empID)
 
     const getSingleEmployeeDetails = () => {
@@ -42,12 +42,12 @@ const RegSingleList = () => {
                             <Row>
                                 <Col md={{ span: 6, offset: 3 }}>
                                     <Card body style={{ boxShadow: "0px 1px 7px rgb(203 203 203)" }}>
-                                        {singleEmployeeData.employeename ? <h6>Name : {singleEmployeeData.employeename} </h6> : ""}
-                                        {singleEmployeeData.email ? <h6>Email : {singleEmployeeData.email} </h6> : ""}
-                                        {singleEmployeeData.phone ? <h6>Phone : {singleEmployeeData.phone} </h6> : ""}
-                                        {singleEmployeeData.gender ? <h6>Gender : {singleEmployeeData.gender} </h6> : ""}
-                                        <h6>Status : {singleEmployeeData.empStatus ? <span className='text-success'>Active </span> : <span className='text-danger'>Inactive</span>} </h6>
-                                        {state.singleEmployee.technology.length === 0 ? null :
+                                        {singleEmployeeData?.employeename ? <h6>Name : {singleEmployeeData.employeename} </h6> : ""}
+                                        {singleEmployeeData?.email ? <h6>Email : {singleEmployeeData.email} </h6> : ""}
+                                        {singleEmployeeData?.phone ? <h6>Phone : {singleEmployeeData.phone} </h6> : ""}
+                                        {singleEmployeeData?.gender ? <h6>Gender : {singleEmployeeData.gender} </h6> : ""}
+                                        <h6>Status : {singleEmployeeData?.empStatus ? <span className='text-success'>Active </span> : <span className='text-danger'>Inactive</span>} </h6>
+                                        {/* {state.singleEmployee.technology.length === 0 ? null :
                                             <h6>Technology :
                                                 {state.singleEmployee.technology.map((tech, id) => {
                                                     return (
@@ -55,11 +55,17 @@ const RegSingleList = () => {
                                                     )
                                                 })}
                                             </h6>
-                                        }
+                                        } */}
+                                   {
+                                    singleEmployeeData?.technology?.map((item, id)=>{
+                                        return (
+                                            <span key={id}> {item.label} </span>
+                                        );
+                                    })
+                                   }
+                                        {singleEmployeeData?.emDetails ? <><h6>Details :</h6>{singleEmployeeData.emDetails} </> : ""}<br/><br/>
 
-                                        {singleEmployeeData.emDetails ? <><h6>Details :</h6>{singleEmployeeData.emDetails} </> : ""}<br/><br/>
-
-                                        {singleEmployeeData.employeeFullDetails ? <><h6>Full Details :</h6> <span dangerouslySetInnerHTML={{ __html: singleEmployeeData.employeeFullDetails }}></span></> : ""}
+                                        {singleEmployeeData?.employeeFullDetails ? <><h6>Full Details :</h6> <span dangerouslySetInnerHTML={{ __html: singleEmployeeData.employeeFullDetails }}></span></> : ""}
 
                                     </Card>
                                     <Button className='mt-4 mx-4' variant="secondary" onClick={() => navigate("/regexvalidation/viewlist")}>Back</Button>

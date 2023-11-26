@@ -17,7 +17,7 @@ const AddReactHookForm = () => {
         register,
         formState: { errors },
         handleSubmit,
-    } = useForm({ mode: "onTouched" });
+    } = useForm();
 
     const onSubmit = (data) => console.log(data)
     console.log('errors',errors)

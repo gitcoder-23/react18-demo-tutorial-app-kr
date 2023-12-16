@@ -11,6 +11,7 @@ import ViewUserDetail from "./CrudRealJsonServer/ViewUserDetail";
 import RejexUserValidation from "./regexvalidation/RejexUserValidation";
 import Login from "./login/LoginPage";
 import MenuBar from "./components/MenuBar";
+import WorkerList from "./CrudRedux-Toolkit/WorkerList";
 
 const ComponentRoute = () => {
   // useEffect(() => {
@@ -138,6 +139,15 @@ const ComponentRoute = () => {
           element={
             <PrivateRoute>
               <RejexUserValidation />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/validation/regexvalidation"
+          element={
+            <PrivateRoute>
+              <WorkerList />
             </PrivateRoute>
           }
         />

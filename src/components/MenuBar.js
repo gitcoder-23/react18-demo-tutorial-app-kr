@@ -29,8 +29,8 @@ const MenuBar = () => {
                 <NavDropdown.Item href="/validation/regexvalidation">
                   Regex Validation
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
+                <NavDropdown.Item href="/worker">
+                  Crud Using Redux-Toolkit
                 </NavDropdown.Item>
               </NavDropdown>
 

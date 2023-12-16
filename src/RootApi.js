@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseLoginUrl } from "./config";
+import { baseLoginUrl, baseUrl } from "./config";
 
 export const RootLoginApi = axios.create({
   baseURL: baseLoginUrl,
@@ -7,4 +7,8 @@ export const RootLoginApi = axios.create({
 
 export const RootBaseApi = axios.create({
   baseURL: baseLoginUrl,
+});
+
+export const RootApi = axios.create({
+  baseURL: baseUrl,
 });

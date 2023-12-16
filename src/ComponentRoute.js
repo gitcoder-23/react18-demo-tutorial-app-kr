@@ -144,7 +144,7 @@ const ComponentRoute = () => {
         />
         <Route
           exact
-          path="/validation/regexvalidation"
+          path="/worker"
           element={
             <PrivateRoute>
               <WorkerList />

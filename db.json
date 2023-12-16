@@ -315,5 +315,269 @@
       "emDetails": "ankita",
       "employeeFullDetails": "<h3><strong style=\"color: rgb(0, 0, 0);\">Lorem Ipsum</strong><span style=\"color: rgb(0, 0, 0);\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </span><strong style=\"color: rgb(0, 0, 0);\">standard dummy</strong></h3>"
     }
+  ],
+
+  "worker": [
+    {
+      "employeename": "Alita Watson",
+      "email": "utest@yahoo.com",
+      "phone": "98745468521",
+      "gender": "female",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "node",
+          "label": "Node"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        }
+      ],
+      "performance": "best",
+      "id": "5dc2a99d-545e-4580-9733-0f7ede1c8ec3"
+    },
+    {
+      "employeename": "John Vogan1",
+      "email": "john@yahoo.com",
+      "phone": "98745468521",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "node",
+          "label": "Node"
+        },
+        {
+          "value": "angular",
+          "label": "Angular"
+        }
+      ],
+      "id": "40e5a1ab-4d05-4512-bb13-bf6ce3995271"
+    },
+    {
+      "employeename": "Tarun Kumar Das",
+      "email": "tarun1@yahoo.com",
+      "phone": "9874561235",
+      "gender": "others",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        },
+        {
+          "value": "node",
+          "label": "Node"
+        }
+      ],
+      "id": "9775e298-308d-47ad-a0d0-2e27c1126f26"
+    },
+    {
+      "id": 1700295132693,
+      "employeename": "Mohan Kumar",
+      "email": "mohan@yahoo.com",
+      "phone": "8975482147",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        },
+        {
+          "value": "node",
+          "label": "Node"
+        }
+      ]
+    },
+    {
+      "employeename": "Raju Kumar",
+      "email": "raju@yahoo.com",
+      "phone": "7875482147",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        }
+      ],
+      "performance": "best",
+      "details": "Raju Kumar Test",
+      "status": false,
+      "id": 1700295174834
+    },
+    {
+      "employeename": "Ankit Pramanik",
+      "email": "ankit@gmail.com",
+      "phone": "+21 791 675 8914",
+      "gender": "male",
+      "technology": [
+        {
+          "label": "React",
+          "value": "react"
+        },
+        {
+          "label": "Node",
+          "value": "node"
+        }
+      ],
+      "performance": "good",
+      "details": "Hi There",
+      "status": true,
+      "id": 1700333011189
+    },
+    {
+      "employeename": "dfgdfg",
+      "email": "atuny0@sohu.comm",
+      "phone": "+21 791 675 8914",
+      "gender": "female",
+      "technology": [
+        {
+          "label": "Node",
+          "value": "node"
+        }
+      ],
+      "performance": "good",
+      "id": 1700376696843
+    },
+    {
+      "employeename": "dfgdfg",
+      "email": "atuny0@sohu.comm",
+      "phone": "+21 791 675 8914",
+      "gender": "male",
+      "technology": [
+        {
+          "label": "Node",
+          "value": "node"
+        }
+      ],
+      "performance": "better",
+      "id": 1700376841699
+    },
+    {
+      "employeename": "Latica Das",
+      "email": "latica@yahoo.com",
+      "phone": "7894561233",
+      "gender": "female",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        }
+      ],
+      "performance": "better",
+      "id": 1700378903697
+    },
+    {
+      "employeename": "Manorama Das",
+      "email": "manorama@yahoo.com",
+      "phone": "7894561235",
+      "gender": "female",
+      "technology": [
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "vue",
+          "label": "Vue"
+        },
+        {
+          "value": "node",
+          "label": "Node"
+        }
+      ],
+      "performance": "best",
+      "details": "Test the user if available or not.",
+      "status": true,
+      "id": 1700380006564
+    },
+    {
+      "employeename": "Rohan Singh",
+      "email": "rohan@yahoo.com",
+      "phone": "8964125847",
+      "gender": "male",
+      "technology": [
+        {
+          "value": "angular",
+          "label": "Angular"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        }
+      ],
+      "performance": "best",
+      "details": "Good mEmployee",
+      "status": false,
+      "id": 1700380945922
+    },
+    {
+      "employeename": "Linda Rose",
+      "email": "linda@yahoo.com",
+      "phone": "4584741478",
+      "gender": "female",
+      "technology": [
+        {
+          "value": "node",
+          "label": "Node"
+        },
+        {
+          "value": "react",
+          "label": "React"
+        },
+        {
+          "value": "angular",
+          "label": "Angular"
+        }
+      ],
+      "performance": "better",
+      "details": "Check Linda",
+      "status": true,
+      "fulldetails": "<ul><li><strong><em>Good and new user for the database.</em></strong></li></ul>",
+      "id": 1700382496717
+    },
+    {
+      "id": 1700382837495,
+      "employeename": "sds",
+      "email": "gdfgfg",
+      "phone": "7",
+      "gender": "male",
+      "technology": [
+        {
+          "label": "React",
+          "value": "react"
+        }
+      ]
+    }
   ]
 }

@@ -57,6 +57,9 @@ const MenuBar = () => {
                 <NavDropdown.Item href="/validation/regexvalidation">
                   Regex Validation
                 </NavDropdown.Item>
+                <NavDropdown.Item href="/worker">
+                  Crud Using Redux-Toolkit
+                </NavDropdown.Item>
               </NavDropdown>
 
               <Nav.Link

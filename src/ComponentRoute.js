@@ -16,6 +16,7 @@ import RegexViewList from "./regexvalidation/RegexViewList";
 import RegSingleList from "./regexvalidation/RegSingleList";
 import EditRegexSingleEmploy from "./regexvalidation/EditRegexSingleEmploy";
 import AddReactHookForm from "./reactHookForm/AddReactHookForm";
+import WorkerList from "./CrudRedux-Toolkit/WorkerList";
 
 const ComponentRoute = () => {
   // useEffect(() => {
@@ -152,6 +153,15 @@ const ComponentRoute = () => {
         <Route exac path='/regexvalidation/viewlist/edit/:id' element={<EditRegexSingleEmploy/>} />
 
         <Route exac path='/reacthookform/addemployee' element={<AddReactHookForm/>} />
+        <Route
+          exact
+          path="/worker"
+          element={
+            <PrivateRoute>
+              <WorkerList />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

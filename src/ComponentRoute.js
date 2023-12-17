@@ -18,6 +18,7 @@ import EditRegexSingleEmploy from "./regexvalidation/EditRegexSingleEmploy";
 import AddReactHookForm from "./reactHookForm/AddReactHookForm";
 import WorkerList from "./CrudRedux-Toolkit/WorkerList";
 import StudentList from "./CrudRedux-Toolkit/StudentList";
+import WorkerView from "./CrudRedux-Toolkit/WorkerView";
 
 const ComponentRoute = () => {
   // useEffect(() => {
@@ -148,12 +149,30 @@ const ComponentRoute = () => {
             </PrivateRoute>
           }
         />
-        <Route exac path='/regexvalidation' element={<RegexValidation/>} />
-        <Route exac path='/regexvalidation/viewlist' element={<RegexViewList/>} />
-        <Route exac path='/regexvalidation/viewlist/:empID' element={<RegSingleList/>} />
-        <Route exac path='/regexvalidation/viewlist/edit/:id' element={<EditRegexSingleEmploy/>} />
+        <Route exac path="/regexvalidation" element={<RegexValidation />} />
+        <Route
+          exac
+          path="/regexvalidation/viewlist"
+          element={<RegexViewList />}
+        />
+        <Route
+          exac
+          path="/regexvalidation/viewlist/:empID"
+          element={<RegSingleList />}
+        />
+        <Route
+          exac
+          path="/regexvalidation/viewlist/edit/:id"
+          element={<EditRegexSingleEmploy />}
+        />
 
-        <Route exac path='/reacthookform/addemployee' element={<AddReactHookForm/>} />
+        <Route
+          exac
+          path="/reacthookform/addemployee"
+          element={<AddReactHookForm />}
+        />
+
+        {/* Route for redux operation */}
         <Route
           exact
           path="/worker"
@@ -163,9 +182,26 @@ const ComponentRoute = () => {
             </PrivateRoute>
           }
         />
-        <Route exac path='/student' element={<PrivateRoute>
+        <Route
+          exact
+          path="/worker/view/:vid"
+          element={
+            <PrivateRoute>
+              <WorkerView />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Student */}
+        <Route
+          exac
+          path="/student"
+          element={
+            <PrivateRoute>
               <StudentList />
-            </PrivateRoute>} />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   );

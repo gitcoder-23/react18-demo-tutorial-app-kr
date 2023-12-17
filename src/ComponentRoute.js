@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import TodoApp from "./demoApps/TodoApp";
 import TaskTodoApp from "./demoApps/TaskTodoApp";
@@ -17,6 +17,7 @@ import RegSingleList from "./regexvalidation/RegSingleList";
 import EditRegexSingleEmploy from "./regexvalidation/EditRegexSingleEmploy";
 import AddReactHookForm from "./reactHookForm/AddReactHookForm";
 import WorkerList from "./CrudRedux-Toolkit/WorkerList";
+import StudentList from "./CrudRedux-Toolkit/StudentList";
 
 const ComponentRoute = () => {
   // useEffect(() => {
@@ -162,6 +163,9 @@ const ComponentRoute = () => {
             </PrivateRoute>
           }
         />
+        <Route exac path='/student' element={<PrivateRoute>
+              <StudentList />
+            </PrivateRoute>} />
       </Routes>
     </>
   );

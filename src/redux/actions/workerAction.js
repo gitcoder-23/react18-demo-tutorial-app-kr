@@ -4,7 +4,7 @@ import { RootApi } from "../../RootApi";
 
 export const getAllWorkers = createAsyncThunk("worker/get", async () => {
   // const reaponse = await axios.get('')
-  const response = await RootApi.get("/workerdfd");
+  const response = await RootApi.get("/worker");
   console.log("response===>", response);
   return response.data.reverse();
 });

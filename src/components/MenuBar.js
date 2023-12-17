@@ -10,7 +10,7 @@ const MenuBar = () => {
   return (
     <>
       <Navbar expand="lg" className="bg-primary" data-bs-theme="dark">
-      <Container>
+      {/* <Container>
         <Navbar.Brand href="/usertodo">Todo</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className='justify-content-end'>
@@ -36,9 +36,8 @@ const MenuBar = () => {
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-      </Container>
-    </Navbar>
-        <Container>
+      </Container> */}
+    <Container>
           <Navbar.Brand href="/usertodo">Todo</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
@@ -60,6 +59,9 @@ const MenuBar = () => {
                 <NavDropdown.Item href="/worker">
                   Crud Using Redux-Toolkit
                 </NavDropdown.Item>
+                <NavDropdown.Item href="/student">
+                  Student Redux-Toolkit
+                </NavDropdown.Item>
               </NavDropdown>
 
               <Nav.Link
@@ -71,6 +73,8 @@ const MenuBar = () => {
             </Nav>
           </Navbar.Collapse>
         </Container>
+    </Navbar>
+        
     </>
   );
 };

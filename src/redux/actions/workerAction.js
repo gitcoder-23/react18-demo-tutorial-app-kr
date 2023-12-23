@@ -25,9 +25,17 @@ export const viewSingleWorkers = createAsyncThunk(
 export const addWorker = createAsyncThunk(
   "worker/post",
   async ({ workerData }) => {
-    console.log("addWorker-=>", workerData);
+    // console.log("addWorker-=>", workerData);
     const response = await RootApi.post(`/worker`, workerData);
-    console.log("response-view===>", response);
+    // console.log("response-view===>", response);
     return response.data;
   }
 );
+
+// Add Action
+export const deleteWorker = createAsyncThunk("worker/delete", async (wid) => {
+  console.log("deleteWorker-id-=>", wid);
+  const response = await RootApi.delete(`/worker/${wid}`);
+  console.log("response-del===>", response);
+  return response.data;
+});

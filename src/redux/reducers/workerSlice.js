@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   addWorker,
+  deleteWorker,
   getAllWorkers,
   viewSingleWorkers,
 } from "../actions/workerAction";
@@ -68,13 +69,33 @@ const workerSlice = createSlice({
     });
 
     builder.addCase(addWorker.fulfilled, (state, actions) => {
-      console.log("actions==>", actions);
+      // console.log("actions==>", actions);
       state.isLoading = false;
       state.allWorkers = [...state.allWorkers, actions.payload];
       state.message = "New worker added";
     });
 
     builder.addCase(addWorker.rejected, (state, actions) => {
+      // console.log("actions==>", actions);
+      state.isLoading = false;
+      state.message = "Something went wrong";
+    });
+
+    // Delete Single Worker
+
+    builder.addCase(deleteWorker.pending, (state) => {
+      state.isLoading = true;
+      state.message = "Data loading";
+    });
+
+    builder.addCase(deleteWorker.fulfilled, (state, actions) => {
+      console.log("actions==>", actions);
+      state.isLoading = false;
+      state.allWorkers = [...state.allWorkers, actions.payload];
+      state.message = "worker deleted";
+    });
+
+    builder.addCase(deleteWorker.rejected, (state, actions) => {
       // console.log("actions==>", actions);
       state.isLoading = false;
       state.message = "Something went wrong";

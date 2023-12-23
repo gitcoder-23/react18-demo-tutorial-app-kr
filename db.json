@@ -318,70 +318,6 @@
   ],
   "worker": [
     {
-      "workername": "Alita Watson",
-      "email": "utest@yahoo.com",
-      "phone": "98745468521",
-      "gender": "female",
-      "technology": [
-        {
-          "value": "angular",
-          "label": "Angular"
-        },
-        {
-          "value": "node",
-          "label": "Node"
-        },
-        {
-          "value": "react",
-          "label": "React"
-        }
-      ],
-      "performance": "best",
-      "id": "5dc2a99d-545e-4580-9733-0f7ede1c8ec3"
-    },
-    {
-      "workername": "John Vogan1",
-      "email": "john@yahoo.com",
-      "phone": "98745468521",
-      "gender": "male",
-      "technology": [
-        {
-          "value": "node",
-          "label": "Node"
-        },
-        {
-          "value": "angular",
-          "label": "Angular"
-        }
-      ],
-      "id": "40e5a1ab-4d05-4512-bb13-bf6ce3995271"
-    },
-    {
-      "workername": "Tarun Kumar Das",
-      "email": "tarun1@yahoo.com",
-      "phone": "9874561235",
-      "gender": "others",
-      "technology": [
-        {
-          "value": "angular",
-          "label": "Angular"
-        },
-        {
-          "value": "react",
-          "label": "React"
-        },
-        {
-          "value": "vue",
-          "label": "Vue"
-        },
-        {
-          "value": "node",
-          "label": "Node"
-        }
-      ],
-      "id": "9775e298-308d-47ad-a0d0-2e27c1126f26"
-    },
-    {
       "id": 1700295132693,
       "workername": "Mohan Kumar",
       "email": "mohan@yahoo.com",
@@ -445,34 +381,6 @@
       "details": "Hi There",
       "status": true,
       "id": 1700333011189
-    },
-    {
-      "workername": "dfgdfg",
-      "email": "atuny0@sohu.comm",
-      "phone": "+21 791 675 8914",
-      "gender": "female",
-      "technology": [
-        {
-          "label": "Node",
-          "value": "node"
-        }
-      ],
-      "performance": "good",
-      "id": 1700376696843
-    },
-    {
-      "workername": "dfgdfg",
-      "email": "atuny0@sohu.comm",
-      "phone": "+21 791 675 8914",
-      "gender": "male",
-      "technology": [
-        {
-          "label": "Node",
-          "value": "node"
-        }
-      ],
-      "performance": "better",
-      "id": 1700376841699
     },
     {
       "workername": "Latica Das",
@@ -566,38 +474,10 @@
       "id": 1700382496717
     },
     {
-      "id": 1703315335836,
-      "workername": "John",
-      "email": "john@g.com",
-      "phone": "894584545",
-      "gender": "male"
-    },
-    {
-      "id": 1703315561184,
-      "workername": "Suhana Khan",
-      "email": "suhana@hh.com",
-      "phone": "8745847584",
-      "gender": "female"
-    },
-    {
       "id": 1703315627613,
       "workername": "Suhana Khan",
       "email": "suhana@hh.com",
       "phone": "8745847584",
-      "gender": "female"
-    },
-    {
-      "id": 1703315796724,
-      "workername": "dfd",
-      "email": "fgdfs@dfgdf.com",
-      "phone": "7687666464",
-      "gender": "others"
-    },
-    {
-      "id": 1703315830644,
-      "workername": "fgfg",
-      "email": "fgdf#b",
-      "phone": "565656786",
       "gender": "female"
     }
   ],

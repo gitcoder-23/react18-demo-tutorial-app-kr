@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllWorkers } from "../redux/actions/workerAction";
+import { deleteWorker, getAllWorkers } from "../redux/actions/workerAction";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const WorkerList = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,26 @@ const WorkerList = () => {
 
   const viewClick = (vdata) => {
     navigate(`/worker/view/${vdata.id}`);
+  };
+
+  const deleteClick = (delId) => {
+    console.log("delId=>", delId);
+    if (window.confirm("Do you want?")) {
+      dispatch(deleteWorker(delId))
+        .then((resp) => {
+          console.log("resp=>", resp);
+          if (resp.type === "worker/delete/fulfilled") {
+            toast.success("Delete success!", {
+              position: toast.POSITION.TOP_RIGHT,
+            });
+
+            dispatch(getAllWorkers());
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   return (
@@ -50,7 +71,7 @@ const WorkerList = () => {
                     <button onClick={() => viewClick(data)}>View</button>
                     &nbsp;&nbsp;&nbsp;
                     <button>Edit</button>&nbsp;&nbsp;&nbsp;
-                    <button>Delete</button>
+                    <button onClick={() => deleteClick(data.id)}>Delete</button>
                   </td>
                 </tr>
               </tbody>

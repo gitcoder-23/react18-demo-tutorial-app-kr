@@ -19,6 +19,7 @@ import AddReactHookForm from "./reactHookForm/AddReactHookForm";
 import WorkerList from "./CrudRedux-Toolkit/WorkerList";
 import StudentList from "./CrudRedux-Toolkit/StudentList";
 import WorkerView from "./CrudRedux-Toolkit/WorkerView";
+import WorkerAdd from "./CrudRedux-Toolkit/WorkerAdd";
 
 const ComponentRoute = () => {
   // useEffect(() => {
@@ -189,6 +190,15 @@ const ComponentRoute = () => {
         />
 
         {/* Route for redux operation */}
+        <Route
+          exact
+          path="/workeradd"
+          element={
+            <PrivateRoute>
+              <WorkerAdd />
+            </PrivateRoute>
+          }
+        />
         <Route
           exact
           path="/worker"

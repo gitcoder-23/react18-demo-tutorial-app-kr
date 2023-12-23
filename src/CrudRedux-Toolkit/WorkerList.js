@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllWorkers } from "../redux/actions/workerAction";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const WorkerList = () => {
   const dispatch = useDispatch();
@@ -22,6 +22,9 @@ const WorkerList = () => {
 
   return (
     <div className="mt-4">
+      <div>
+        <Link to={"/workeradd"}>+ Add Worker</Link>
+      </div>
       <Table striped bordered hover>
         <thead>
           <tr>

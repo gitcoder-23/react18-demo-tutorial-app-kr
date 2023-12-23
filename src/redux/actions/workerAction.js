@@ -14,8 +14,19 @@ export const getAllWorkers = createAsyncThunk("worker/get", async () => {
 export const viewSingleWorkers = createAsyncThunk(
   "worker/view",
   async ({ viewId }) => {
-    console.log("viewSingleWorkers-vid=>", viewId);
+    // console.log("viewSingleWorkers-vid=>", viewId);
     const response = await RootApi.get(`/worker/${viewId}`);
+    // console.log("response-view===>", response);
+    return response.data;
+  }
+);
+
+// Add Action
+export const addWorker = createAsyncThunk(
+  "worker/post",
+  async ({ workerData }) => {
+    console.log("addWorker-=>", workerData);
+    const response = await RootApi.post(`/worker`, workerData);
     console.log("response-view===>", response);
     return response.data;
   }

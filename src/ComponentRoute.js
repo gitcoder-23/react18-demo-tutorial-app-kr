@@ -153,23 +153,39 @@ const ComponentRoute = () => {
         <Route
           exac
           path="/regexvalidation/viewlist"
-          element={<RegexViewList />}
+          element={
+            <PrivateRoute>
+              <RegexViewList />
+            </PrivateRoute>
+          }
         />
         <Route
           exac
           path="/regexvalidation/viewlist/:empID"
-          element={<RegSingleList />}
+          element={
+            <PrivateRoute>
+              <RegSingleList />
+            </PrivateRoute>
+          }
         />
         <Route
           exac
           path="/regexvalidation/viewlist/edit/:id"
-          element={<EditRegexSingleEmploy />}
+          element={
+            <PrivateRoute>
+              <EditRegexSingleEmploy />
+            </PrivateRoute>
+          }
         />
 
         <Route
           exac
           path="/reacthookform/addemployee"
-          element={<AddReactHookForm />}
+          element={
+            <PrivateRoute>
+              <AddReactHookForm />
+            </PrivateRoute>
+          }
         />
 
         {/* Route for redux operation */}

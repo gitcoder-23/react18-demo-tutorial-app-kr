@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   addWorker,
   deleteWorker,
+  editWorker,
   getAllWorkers,
   viewSingleWorkers,
 } from "../actions/workerAction";
@@ -76,6 +77,26 @@ const workerSlice = createSlice({
     });
 
     builder.addCase(addWorker.rejected, (state, actions) => {
+      // console.log("actions==>", actions);
+      state.isLoading = false;
+      state.message = "Something went wrong";
+    });
+
+    // Edit Worker
+
+    builder.addCase(editWorker.pending, (state) => {
+      state.isLoading = true;
+      state.message = "Data loading";
+    });
+
+    builder.addCase(editWorker.fulfilled, (state, actions) => {
+      // console.log("actions==>", actions);
+      state.isLoading = false;
+      state.allWorkers = [...state.allWorkers, actions.payload];
+      state.message = "worker update";
+    });
+
+    builder.addCase(editWorker.rejected, (state, actions) => {
       // console.log("actions==>", actions);
       state.isLoading = false;
       state.message = "Something went wrong";

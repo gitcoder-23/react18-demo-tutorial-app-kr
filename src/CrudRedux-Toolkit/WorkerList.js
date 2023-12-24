@@ -21,6 +21,12 @@ const WorkerList = () => {
     navigate(`/worker/view/${vdata.id}`);
   };
 
+  const editClick = (eData) => {
+    navigate(`/worker/edit/${eData.id}`, {
+      state: { workerData: eData },
+    });
+  };
+
   const deleteClick = (delId) => {
     console.log("delId=>", delId);
     if (window.confirm("Do you want?")) {
@@ -70,7 +76,8 @@ const WorkerList = () => {
                   <td>
                     <button onClick={() => viewClick(data)}>View</button>
                     &nbsp;&nbsp;&nbsp;
-                    <button>Edit</button>&nbsp;&nbsp;&nbsp;
+                    <button onClick={() => editClick(data)}>Edit</button>
+                    &nbsp;&nbsp;&nbsp;
                     <button onClick={() => deleteClick(data.id)}>Delete</button>
                   </td>
                 </tr>

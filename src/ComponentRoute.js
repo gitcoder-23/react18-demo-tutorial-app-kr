@@ -20,6 +20,7 @@ import WorkerList from "./CrudRedux-Toolkit/WorkerList";
 import StudentList from "./CrudRedux-Toolkit/StudentList";
 import WorkerView from "./CrudRedux-Toolkit/WorkerView";
 import WorkerAdd from "./CrudRedux-Toolkit/WorkerAdd";
+import WorkerEdit from "./CrudRedux-Toolkit/WorkerEdit";
 
 const ComponentRoute = () => {
   // useEffect(() => {
@@ -30,7 +31,7 @@ const ComponentRoute = () => {
 
   function PrivateRoute({ children }) {
     const getStorageUserData = JSON.parse(localStorage.getItem("userdata"));
-    console.log("pri-getStorageUserData=>", getStorageUserData);
+    // console.log("pri-getStorageUserData=>", getStorageUserData);
     return getStorageUserData !== null ? (
       <>{children}</>
     ) : (
@@ -205,6 +206,15 @@ const ComponentRoute = () => {
           element={
             <PrivateRoute>
               <WorkerList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/worker/edit/:eid"
+          element={
+            <PrivateRoute>
+              <WorkerEdit />
             </PrivateRoute>
           }
         />
